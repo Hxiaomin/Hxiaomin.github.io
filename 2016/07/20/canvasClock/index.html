@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="hexo," />
+  <meta name="keywords" content="canvas,html5," />
 
 
 
@@ -80,28 +80,18 @@
 
 
 
-<meta name="description" content="简写hexo n == hexo new
-hexo p == hexo publish
-hexo g == hexo generate
-hexo s == hexo server
-hexo d == hexo deploy">
+<meta name="description" content="简易时钟See the Pen zBWOJX by hxiaomin (@hxiaomin) on CodePen.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo常用命令">
-<meta property="og:url" content="http://Hxiaomin.github.io/2016/04/16/hexoCommand/index.html">
+<meta property="og:title" content="canvas实现简易时钟">
+<meta property="og:url" content="http://Hxiaomin.github.io/2016/07/20/canvasClock/index.html">
 <meta property="og:site_name" content="且听风吟">
-<meta property="og:description" content="简写hexo n == hexo new
-hexo p == hexo publish
-hexo g == hexo generate
-hexo s == hexo server
-hexo d == hexo deploy">
-<meta property="og:updated_time" content="2016-04-16T14:47:17.227Z">
+<meta property="og:description" content="简易时钟See the Pen zBWOJX by hxiaomin (@hxiaomin) on CodePen.">
+<meta property="og:image" content="http://7xt1hs.com1.z0.glb.clouddn.com/clockChange.png">
+<meta property="og:updated_time" content="2016-07-20T07:23:44.819Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo常用命令">
-<meta name="twitter:description" content="简写hexo n == hexo new
-hexo p == hexo publish
-hexo g == hexo generate
-hexo s == hexo server
-hexo d == hexo deploy">
+<meta name="twitter:title" content="canvas实现简易时钟">
+<meta name="twitter:description" content="简易时钟See the Pen zBWOJX by hxiaomin (@hxiaomin) on CodePen.">
+<meta name="twitter:image" content="http://7xt1hs.com1.z0.glb.clouddn.com/clockChange.png">
 
 
 
@@ -119,7 +109,7 @@ hexo d == hexo deploy">
   };
 </script>
 
-  <title> hexo常用命令 | 且听风吟 </title>
+  <title> canvas实现简易时钟 | 且听风吟 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -289,7 +279,7 @@ hexo d == hexo deploy">
             
             
               
-                hexo常用命令
+                canvas实现简易时钟
               
             
           </h1>
@@ -301,8 +291,8 @@ hexo d == hexo deploy">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-16T22:06:12+08:00" content="2016-04-16">
-              2016-04-16
+            <time itemprop="dateCreated" datetime="2016-07-20T14:54:00+08:00" content="2016-07-20">
+              2016-07-20
             </time>
           </span>
 
@@ -331,8 +321,8 @@ hexo d == hexo deploy">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/16/hexoCommand/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/16/hexoCommand/" itemprop="commentsCount"></span>
+                <a href="/2016/07/20/canvasClock/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/20/canvasClock/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -342,7 +332,7 @@ hexo d == hexo deploy">
 
           
           
-             <span id="/2016/04/16/hexoCommand/" class="leancloud_visitors" data-flag-title="hexo常用命令">
+             <span id="/2016/07/20/canvasClock/" class="leancloud_visitors" data-flag-title="canvas实现简易时钟">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -364,56 +354,7 @@ hexo d == hexo deploy">
       
 
       
-        <h2 id="简写"><a href="#简写" class="headerlink" title="简写"></a>简写</h2><p><code>hexo n</code> == <code>hexo new</code></p>
-<p><code>hexo p</code> == <code>hexo publish</code></p>
-<p><code>hexo g</code> == <code>hexo generate</code></p>
-<p><code>hexo s</code> == <code>hexo server</code></p>
-<p><code>hexo d</code> == <code>hexo deploy</code><br><a id="more"></a></p>
-<h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><p><code>hexo server</code> //Hexo 会监视文件变动并自动更新，您无须重启服务器。</p>
-<p><code>hexo server -s</code> //静态模式</p>
-<p><code>hexo server -p 5000</code> //更改端口</p>
-<p><code>hexo server -i 192.168.1.1</code> //自定义 IP</p>
-<p><code>hexo clean</code> //清除缓存 网页正常情况下可以忽略此条命令</p>
-<p><code>hexo g</code> //生成静态网页</p>
-<p><code>hexo d</code> //开始部署</p>
-<h2 id="监视文件变动"><a href="#监视文件变动" class="headerlink" title="监视文件变动"></a>监视文件变动</h2><p>hexo generate #使用 Hexo 生成静态文件快速而且简单</p>
-<p>hexo generate –watch #监视文件变动</p>
-<h2 id="完成后部署"><a href="#完成后部署" class="headerlink" title="完成后部署"></a>完成后部署</h2><p>两个命令的作用是相同的<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate --deploy </span><br><span class="line">hexo deploy --generate</span><br></pre></td></tr></table></figure></p>
-<p><code>hexo deploy -g</code><br><code>hexo server -g</code></p>
-<h2 id="草稿"><a href="#草稿" class="headerlink" title="草稿"></a>草稿</h2><p><code>hexo publish [layout] &lt;title&gt;</code><br>Hexo提供了3种默认的布局，post、page和draft，路径分别为：source/_posts、source、source/_draft。<br>Hexo提供草稿功能，在_drafts目录下的文章不会发表到网站上，你可以通过命令hexo publish [layout] <title>发布你的草稿，改命令会将文章移到_posts目录下。但是也可以设置_config.yml配置文件的render_drafts字段，使草稿默认发布到站点中。</title></p>
-<h2 id="模版"><a href="#模版" class="headerlink" title="模版"></a>模版</h2><p><code>hexo new &quot;postName&quot;</code> //新建文章<br><code>hexo new page &quot;pageName&quot;</code> //新建页面<br><code>hexo generate</code> //生成静态页面至public目录<br><code>hexo server</code> //开启预览访问端口（默认端口4000，’ctrl + c’关闭server）<br><code>hexo deploy</code> //将.deploy目录部署到GitHub</p>
-<p><code>hexo new [layout] &lt;title&gt;</code><br><code>hexo new photo &quot;My Gallery&quot;</code><br><code>hexo new &quot;Hello World&quot; --lang tw</code></p>
-<table>
-<thead>
-<tr>
-<th>变量</th>
-<th>描述 </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>layout</td>
-<td>布局    </td>
-</tr>
-<tr>
-<td>title</td>
-<td>标题      </td>
-</tr>
-<tr>
-<td>date</td>
-<td>文件建立日期   </td>
-</tr>
-</tbody>
-</table>
-<pre><code class="bash">title: 使用Hexo搭建个人博客
-layout: post
-date: 2016-04-16 19:50:50
-comments: <span class="literal">true</span>
-categories: B<span class="built_in">log</span>
-tags: [Hexo]
-keywords: Hexo, B<span class="built_in">log</span>
-description: 爱我你怕了吧。
-</code></pre>
+        <h2 id="简易时钟"><a href="#简易时钟" class="headerlink" title="简易时钟"></a>简易时钟</h2><p><iframe height="300" scrolling="no" src="//codepen.io/hxiaomin/embed/zBWOJX/?height=300&theme-id=23766&default-tab=html,result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/hxiaomin/pen/zBWOJX/" target="_blank" rel="external">zBWOJX</a> by hxiaomin (<a href="http://codepen.io/hxiaomin" target="_blank" rel="external">@hxiaomin</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.<br></iframe><br><a id="more"></a><br>（1）首先要弄清时钟的逻辑，开始画时钟的时候，画布大小为400px，我们还要画分钟，时钟的刻度线，我们以画布中心为原点比按原来的原点为中心更符合逻辑，所以我们将原来的原点向中心平移，即c.translate(200,200)，但是平移之后x轴和y轴是向下的，为了方便之后时针，分针符合正常逻辑的算法，我们还是将x轴的正向转换为右边，y轴的正向转换为上边，即c.rotate(-Math.PI/2);<br><img src="http://7xt1hs.com1.z0.glb.clouddn.com/clockChange.png"><br>（2）接下来分钟和时钟的刻度线变以原点为中心，向四周画，分钟画完一个刻度线后，画布旋转Math.PI/30，时钟画完一个刻度线后，画布旋转Math.PI/6，接着画表盘的数字，表盘的圆心和外表盘。<br>（3）画完之后就画时针，分针，秒针，但是这里要注意，在画时针的时候，画布的旋转是会影响到接下来分针和秒针的绘画的，但是我们的算法是要按y轴开始，而不是画布旋转之后的起点开始，所以这里会用到c.save()和c.restore(),他们是成对出现的（ 当我们对画布进行旋转，缩放，平移等操作的时候其实我们是想对特定的元素进行操作，比如图片，一个矩形等，但是当你用canvas的方法来进行这些操作的时候，其实是对整个画布进行了操作，那么之后在画布上的元素都会受到影响，所以我们在操作之前调用c.save()来保存画布当前的状态，当操作之后取出之前保存过的状态c.restore()，这样就不会对其他的元素进行影响）</p>
 
       
     </div>
@@ -455,7 +396,9 @@ description: 爱我你怕了吧。
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag">#hexo</a>
+            <a href="/tags/canvas/" rel="tag">#canvas</a>
+          
+            <a href="/tags/html5/" rel="tag">#html5</a>
           
         </div>
       
@@ -464,17 +407,13 @@ description: 爱我你怕了吧。
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/16/markdown/" rel="next" title="Markdown常用语法总结">
-                <i class="fa fa-chevron-left"></i> Markdown常用语法总结
+              <a href="/2016/05/08/ribbon/" rel="next" title="css3丝带效果实现">
+                <i class="fa fa-chevron-left"></i> css3丝带效果实现
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/29/nodejs/" rel="prev" title="码农二三事（一）">
-                码农二三事（一） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -526,8 +465,8 @@ description: 爱我你怕了吧。
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/16/hexoCommand/"
-           data-title="hexo常用命令" data-url="http://Hxiaomin.github.io/2016/04/16/hexoCommand/">
+      <div class="ds-thread" data-thread-key="2016/07/20/canvasClock/"
+           data-title="canvas实现简易时钟" data-url="http://Hxiaomin.github.io/2016/07/20/canvasClock/">
       </div>
     
   </div>
@@ -647,7 +586,7 @@ description: 爱我你怕了吧。
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简写"><span class="nav-number">1.</span> <span class="nav-text">简写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器"><span class="nav-number">2.</span> <span class="nav-text">服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#监视文件变动"><span class="nav-number">3.</span> <span class="nav-text">监视文件变动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完成后部署"><span class="nav-number">4.</span> <span class="nav-text">完成后部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#草稿"><span class="nav-number">5.</span> <span class="nav-text">草稿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模版"><span class="nav-number">6.</span> <span class="nav-text">模版</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简易时钟"><span class="nav-number">1.</span> <span class="nav-text">简易时钟</span></a></li></ol></div>
             
           </div>
         </section>
