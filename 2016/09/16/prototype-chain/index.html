@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="music," />
+  <meta name="keywords" content="javascript,this,prototype,constructor,call,apply," />
 
 
 
@@ -80,16 +80,16 @@
 
 
 
-<meta name="description" content="音乐响起来">
+<meta name="description" content="一、call,apply,bindcall与apply的使用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello Hexo">
-<meta property="og:url" content="http://Hxiaomin.github.io/2016/04/16/Hello-Hexo/index.html">
+<meta property="og:title" content="JS原型链的继承">
+<meta property="og:url" content="http://Hxiaomin.github.io/2016/09/16/prototype-chain/index.html">
 <meta property="og:site_name" content="且听风吟">
-<meta property="og:description" content="音乐响起来">
-<meta property="og:updated_time" content="2016-04-16T14:51:09.482Z">
+<meta property="og:description" content="一、call,apply,bindcall与apply的使用">
+<meta property="og:updated_time" content="2016-09-16T16:34:41.419Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello Hexo">
-<meta name="twitter:description" content="音乐响起来">
+<meta name="twitter:title" content="JS原型链的继承">
+<meta name="twitter:description" content="一、call,apply,bindcall与apply的使用">
 
 
 
@@ -107,7 +107,7 @@
   };
 </script>
 
-  <title> Hello Hexo | 且听风吟 </title>
+  <title> JS原型链的继承 | 且听风吟 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -277,7 +277,7 @@
             
             
               
-                Hello Hexo
+                JS原型链的继承
               
             
           </h1>
@@ -289,8 +289,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-16T01:04:35+08:00" content="2016-04-16">
-              2016-04-16
+            <time itemprop="dateCreated" datetime="2016-09-16T22:45:41+08:00" content="2016-09-16">
+              2016-09-16
             </time>
           </span>
 
@@ -303,8 +303,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/entertainment/" itemprop="url" rel="index">
-                    <span itemprop="name">entertainment</span>
+                  <a href="/categories/IT/" itemprop="url" rel="index">
+                    <span itemprop="name">IT</span>
                   </a>
                 </span>
 
@@ -319,8 +319,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/16/Hello-Hexo/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/16/Hello-Hexo/" itemprop="commentsCount"></span>
+                <a href="/2016/09/16/prototype-chain/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/16/prototype-chain/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -330,7 +330,7 @@
 
           
           
-             <span id="/2016/04/16/Hello-Hexo/" class="leancloud_visitors" data-flag-title="Hello Hexo">
+             <span id="/2016/09/16/prototype-chain/" class="leancloud_visitors" data-flag-title="JS原型链的继承">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -352,8 +352,212 @@
       
 
       
-        <h2 id="音乐响起来"><a href="#音乐响起来" class="headerlink" title="音乐响起来"></a>音乐响起来</h2><a id="more"></a>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="50" src="http://music.163.com/outchain/player?type=2&id=28947001&auto=1&height=66" autoplay="false"></iframe>
+        <h2 id="一、call-apply-bind"><a href="#一、call-apply-bind" class="headerlink" title="一、call,apply,bind"></a>一、call,apply,bind</h2><p>call与apply的使用<br><a id="more"></a><br>(1)call(thisArgs [,args…])<br>Example：</p>
+<pre><code class="javascript"><span class="keyword">var</span> a = {
+    name:<span class="string">'Hxiaomin'</span>, 
+    say:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{ 
+        <span class="built_in">console</span>.log(<span class="string">"Hi,I'm Hxiaomin!"</span>);
+    }
+};
+
+<span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params">name</span>)</span>{
+    <span class="built_in">console</span>.log(<span class="string">"I'm "</span>+ name);
+    <span class="keyword">this</span>.say();
+}
+
+b.call(a,<span class="string">'test'</span>);
+</code></pre>
+<p>(2)apply(thisArgs[,args[]])<br>Example：</p>
+<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params">x,y,z</span>)</span>{
+    <span class="built_in">console</span>.log(x,y,z);
+}
+
+b.apply(<span class="literal">null</span>,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]); <span class="comment">// 1 2 3</span>
+</code></pre>
+<p>apply和call的唯一区别是第二个参数的传递方式不同，apply的第二个参数必须是一个数组，而call允许传递一个参数列表。<br>(3)bind(thisArgs [,args…])<br>ES5引入bind的真正目的是为了弥补call/apply的不足，由于call/apply会对目标函数自动执行，从而导致它无法在事件绑定函数中使用，因为事件绑定函数不需要我们手动执行，它是在事件被触发时由JS内部自动执行的。而bind在实现改变函数this的同时又不会自动执行目标函数。<br>Example：</p>
+<pre><code class="javascript"><span class="keyword">var</span> obj = {name:<span class="string">'Hxiaomin'</span>};
+
+<span class="comment">/**
+* 给document添加click事件监听，并绑定onClick函数
+* 通过bind方法设置onClick的this为obj，并传递参数p1,p2
+*/</span>
+<span class="built_in">document</span>.addEventListener(<span class="string">'click'</span>,onClick.bind(obj,<span class="string">'p1'</span>,<span class="string">'p2'</span>),<span class="literal">false</span>);
+
+<span class="comment">//当点击网页时触发并执行</span>
+<span class="function"><span class="keyword">function</span> <span class="title">onClick</span>(<span class="params">a,b</span>)</span>{
+    <span class="built_in">console</span>.log(
+            <span class="keyword">this</span>.name, 
+            a, <span class="comment">//p1</span>
+            b  <span class="comment">//p2</span>
+    )
+}
+</code></pre>
+<h2 id="二、this-prototype-constructor"><a href="#二、this-prototype-constructor" class="headerlink" title="二、this,prototype,constructor"></a>二、this,prototype,constructor</h2><p>(1)this<br>apply和call可以改变this的指向</p>
+<pre><code class="javascript"><span class="comment">// 定义一个全局函数</span>
+<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>{
+    <span class="built_in">console</span>.log(<span class="keyword">this</span>.person);
+}
+
+<span class="comment">// 定义一个全局变量</span>
+<span class="keyword">var</span> person = <span class="string">"you"</span>;
+<span class="comment">// 自定义一个对象</span>
+<span class="keyword">var</span> myself = {
+    person: <span class="string">"me"</span>
+};
+
+<span class="comment">// 等价于window.foo();</span>
+foo.apply(<span class="built_in">window</span>);  <span class="comment">// "you"</span>
+<span class="comment">// 此时foo中的this === myself</span>
+foo.apply(myself);    <span class="comment">// "me"</span>
+</code></pre>
+<p>(2)prototype<br>可用于构造函数的扩展函数，也可在Array等的原型中添加扩展方法<br>(3)constructor<br>javascript中的类型</p>
+<pre><code>* Number（数字）
+* String（字符串）
+* Boolean（布尔）
+* Symbol（符号）（第六版新增）
+* Object（对象）
+    * Function（函数）
+    * Array（数组）
+    * Date（日期）
+    * RegExp（正则表达式）
+* Null（空）
+* Undefined（未定义）
+</code></pre><p>这里有个比较奇怪的现象</p>
+<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>{
+        <span class="keyword">this</span>.name = name;
+};
+Person.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    <span class="keyword">return</span> <span class="keyword">this</span>.name;
+};
+<span class="keyword">var</span> p = <span class="keyword">new</span> Person(<span class="string">"Hxiaomin"</span>);
+
+<span class="built_in">console</span>.log(p.constructor === Person);  <span class="comment">// true</span>
+<span class="built_in">console</span>.log(Person.prototype.constructor === Person); <span class="comment">// true</span>
+<span class="built_in">console</span>.log(p.constructor.prototype.constructor === Person); <span class="comment">// true</span>
+</code></pre>
+<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>{
+        <span class="keyword">this</span>.name = name;
+};
+Person.prototype = {
+    getName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+        <span class="keyword">return</span> <span class="keyword">this</span>.name;
+    }
+};
+<span class="comment">// Person.prototype.constructor = Person; 加入这行代码可以解决这个问题</span>
+<span class="keyword">var</span> p = <span class="keyword">new</span> Person(<span class="string">"Hxiaomin"</span>);
+
+<span class="built_in">console</span>.log(p.constructor === Person);  <span class="comment">// false</span>
+<span class="built_in">console</span>.log(Person.prototype.constructor === Person); <span class="comment">// false</span>
+<span class="built_in">console</span>.log(p.constructor.prototype.constructor === Person); <span class="comment">// false</span>
+</code></pre>
+<p>出现这个现象有高人给出的见解是酱紫的</p>
+<pre><code class="javascript">Person.prototype = <span class="keyword">new</span> <span class="built_in">Object</span>({
+    getName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+        <span class="keyword">return</span> <span class="keyword">this</span>.name;
+    }
+});
+</code></pre>
+<p>此时Person.prototype.constructor === Object<br>另外的解决方法</p>
+<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>{
+    <span class="keyword">this</span>.name = name;
+};
+Person.prototype = {
+      <span class="keyword">constructor</span>:Person,//指定<span class="keyword">constructor</span>
+    getName: function() {
+        <span class="keyword">return</span> <span class="keyword">this</span>.name;
+    }
+};
+</code></pre>
+<h2 id="三、JS定义类的几种方法"><a href="#三、JS定义类的几种方法" class="headerlink" title="三、JS定义类的几种方法"></a>三、JS定义类的几种方法</h2><p>(1)构造函数法</p>
+<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>{
+        <span class="keyword">this</span>.name = name;
+};
+Person.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    <span class="keyword">return</span> <span class="keyword">this</span>.name;
+};
+<span class="keyword">var</span> p = <span class="keyword">new</span> Person(<span class="string">"Hxiaomin"</span>);
+</code></pre>
+<p>(2)Object.create()</p>
+<pre><code class="javascript"><span class="keyword">var</span> person={
+    name:<span class="string">"aaa"</span>,
+    getName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        <span class="keyword">return</span> <span class="keyword">this</span>.name;
+    }
+}
+<span class="keyword">var</span> myperson = <span class="built_in">Object</span>.create(person);
+myperson.name=<span class="string">"Hxiaomin"</span>;
+myperson.getName();
+</code></pre>
+<p>若想将getName作为私有函数</p>
+<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params">name</span>)</span>{
+    <span class="keyword">return</span> <span class="keyword">this</span>.name=name;
+}
+<span class="keyword">var</span> person={
+    name:<span class="string">"aaa"</span>,
+    getPerson: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        <span class="keyword">return</span> getName.call(<span class="keyword">this</span>,<span class="keyword">this</span>.name);
+    }
+}
+<span class="keyword">var</span> myperson = <span class="built_in">Object</span>.create(person);
+myperson.name=<span class="string">"Hxiaomin"</span>;
+myperson.getPerson();
+</code></pre>
+<p>ps:这里顺便提一下定义私有函数的方法<br>上面是一种方法，还有es6使用Symbol的方法</p>
+<pre><code class="javascript"><span class="keyword">const</span> bar = <span class="built_in">Symbol</span>(<span class="string">'bar'</span>);
+<span class="keyword">const</span> snaf = <span class="built_in">Symbol</span>(<span class="string">'snaf'</span>);
+
+<span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">myClass</span></span>{
+
+  <span class="comment">// 公有方法</span>
+  foo(baz) {
+    <span class="keyword">this</span>[bar](baz);
+  }
+
+  <span class="comment">// 私有方法</span>
+  [bar](baz) {
+    <span class="keyword">return</span> <span class="keyword">this</span>[snaf] = baz;
+  }
+
+  <span class="comment">// ...</span>
+};
+</code></pre>
+<p>上面代码中，bar和snaf都是Symbol值，导致第三方无法获取到它们，因此达到了私有方法和私有属性的效果。</p>
+<p>(3)极简主义</p>
+<pre><code class="javascript"><span class="keyword">var</span> person={
+    createPerson: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        <span class="keyword">var</span> people={};
+        people.name=<span class="string">"Hxiaomin"</span>;
+        people.getName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+            <span class="keyword">return</span> <span class="keyword">this</span>.name;
+        }
+        <span class="keyword">return</span> people;
+    }
+}
+<span class="keyword">var</span> person1=person.createPerson();
+person1.getName();
+</code></pre>
+<p>极简主义中的继承</p>
+<pre><code class="javascript"><span class="keyword">var</span> Animal={
+        createAnimal: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+            <span class="keyword">var</span> people={};
+            people.name=<span class="string">"Hxiaomin"</span>;
+            people.getName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+                <span class="keyword">return</span> <span class="keyword">this</span>.name;
+            }
+            <span class="keyword">return</span> people;
+        }
+    };
+
+<span class="keyword">var</span> Person= {
+　　　　creatFn: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+　　　　　　<span class="keyword">var</span> person = Animal.createAnimal();
+　　　　　　person.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{ <span class="built_in">console</span>.log(<span class="string">"Hi,my name is "</span>+<span class="keyword">this</span>.name) };
+　　　　　　<span class="keyword">return</span> person;
+　　　　}
+　　};
+<span class="keyword">var</span> person1= Person.creatFn();
+　　person1.say();
+</code></pre>
 
       
     </div>
@@ -395,7 +599,17 @@
       
         <div class="post-tags">
           
-            <a href="/tags/music/" rel="tag">#music</a>
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/this/" rel="tag">#this</a>
+          
+            <a href="/tags/prototype/" rel="tag">#prototype</a>
+          
+            <a href="/tags/constructor/" rel="tag">#constructor</a>
+          
+            <a href="/tags/call/" rel="tag">#call</a>
+          
+            <a href="/tags/apply/" rel="tag">#apply</a>
           
         </div>
       
@@ -404,17 +618,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/16/hello-world/" rel="next" title="hexo安装及配置">
-                <i class="fa fa-chevron-left"></i> hexo安装及配置
+              <a href="/2016/09/16/react-1/" rel="next" title="react深层次的理解">
+                <i class="fa fa-chevron-left"></i> react深层次的理解
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/16/markdown/" rel="prev" title="Markdown常用语法总结">
-                Markdown常用语法总结 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -466,8 +676,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/16/Hello-Hexo/"
-           data-title="Hello Hexo" data-url="http://Hxiaomin.github.io/2016/04/16/Hello-Hexo/">
+      <div class="ds-thread" data-thread-key="2016/09/16/prototype-chain/"
+           data-title="JS原型链的继承" data-url="http://Hxiaomin.github.io/2016/09/16/prototype-chain/">
       </div>
     
   </div>
@@ -587,7 +797,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#音乐响起来"><span class="nav-number">1.</span> <span class="nav-text">音乐响起来</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、call-apply-bind"><span class="nav-number">1.</span> <span class="nav-text">一、call,apply,bind</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、this-prototype-constructor"><span class="nav-number">2.</span> <span class="nav-text">二、this,prototype,constructor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、JS定义类的几种方法"><span class="nav-number">3.</span> <span class="nav-text">三、JS定义类的几种方法</span></a></li></ol></div>
             
           </div>
         </section>
