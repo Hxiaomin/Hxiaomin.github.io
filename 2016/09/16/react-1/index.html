@@ -86,7 +86,7 @@
 <meta property="og:url" content="http://Hxiaomin.github.io/2016/09/16/react-1/index.html">
 <meta property="og:site_name" content="且听风吟">
 <meta property="og:description" content="一、react与es6以前写react可以会很繁琐，有了es6就一切都变得很简单了首先我们从es6对类的支持说起">
-<meta property="og:updated_time" content="2016-09-16T13:57:43.149Z">
+<meta property="og:updated_time" content="2016-09-17T02:39:07.545Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react深层次的理解">
 <meta name="twitter:description" content="一、react与es6以前写react可以会很繁琐，有了es6就一切都变得很简单了首先我们从es6对类的支持说起">
@@ -573,8 +573,8 @@ toString() {
         )
 }
 </code></pre>
-<p>Page组件的功能大概是上下翻页，有向上点击和向下点击的功能，Page组件需从父组件中知道总页数，获取相应页数数据的函数，这时组件Page就可以进行控制了，当我们点击下一页的时候（Page默认为第一页）然后Page的当前页数加1，Page调用this.props.selectPage(curpage)，于是父组件的项目内容的state发生变化，于是它便重新渲染了，当然我们可以在Page里面设置更多的内容，比如现在我们默认是每个页数10条内容，那Page里面会有个this.perPage=10，但是我们又希望现在不是10条的情况，这样的话可以酱紫写this.perPage=this.props.perPage ||10，需要的话就给Page组件一个props为perPage的属性<br>那如果table被拆分为另外一个组件怎么办？<br>这样的话，给table这个组件props.list=this.state.userlist,当props发生变化的时候，table组件会触发componentWillReceiveProps(nextProps)，此刻我们可以将table组件中相应的state设置成相应的，这样组件就会重新渲染了。</p>
-
+<p>Page组件的功能大概是上下翻页，有向上点击和向下点击的功能，Page组件需从父组件中知道总页数，获取相应页数数据的函数，这时组件Page就可以进行控制了，当我们点击下一页的时候（Page默认为第一页）然后Page的当前页数加1，Page调用this.props.selectPage(curpage)，于是父组件的项目内容的state发生变化，于是它便重新渲染了，当然我们可以在Page里面设置更多的内容，比如现在我们默认是每个页数10条内容，那Page里面会有个this.perPage=10，但是我们又希望现在不是10条的情况，这样的话可以酱紫写this.perPage=this.props.perPage ||10，需要的话就给Page组件一个props为perPage的属性<br>那如果table被拆分为另外一个组件怎么办？<br>这样的话，给table这个组件props.list=this.state.userlist,当props发生变化的时候，table组件会触发componentWillReceiveProps(nextProps)，此刻我们可以将table组件中相应的state设置成相应的，这样组件就会重新渲染了。、</p>
+<h2 id="最后，如有问题请大神指正"><a href="#最后，如有问题请大神指正" class="headerlink" title="最后，如有问题请大神指正~~"></a>最后，如有问题请大神指正~~</h2>
       
     </div>
     
@@ -734,7 +734,7 @@ toString() {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -809,7 +809,7 @@ toString() {
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、react与es6"><span class="nav-number">1.</span> <span class="nav-text">一、react与es6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、react的生命周期"><span class="nav-number">2.</span> <span class="nav-text">二、react的生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、react的props与state"><span class="nav-number">3.</span> <span class="nav-text">三、react的props与state</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、react与es6"><span class="nav-number">1.</span> <span class="nav-text">一、react与es6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、react的生命周期"><span class="nav-number">2.</span> <span class="nav-text">二、react的生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、react的props与state"><span class="nav-number">3.</span> <span class="nav-text">三、react的props与state</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后，如有问题请大神指正"><span class="nav-number">4.</span> <span class="nav-text">最后，如有问题请大神指正~~</span></a></li></ol></div>
             
           </div>
         </section>

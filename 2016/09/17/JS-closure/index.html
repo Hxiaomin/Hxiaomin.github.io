@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="javascript,this,prototype,constructor,call,apply," />
+  <meta name="keywords" content="javascript," />
 
 
 
@@ -80,16 +80,20 @@
 
 
 
-<meta name="description" content="一、call,apply,bindcall与apply的使用">
+<meta name="description" content="闭包出现的原因？  现在我们要设计一个函数，使一个变量累加，当然要实现这个功能，一般情况下我们想到的会是全局变量，如下：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS原型链的继承">
-<meta property="og:url" content="http://Hxiaomin.github.io/2016/09/16/prototype-chain/index.html">
+<meta property="og:title" content="JS的闭包">
+<meta property="og:url" content="http://Hxiaomin.github.io/2016/09/17/JS-closure/index.html">
 <meta property="og:site_name" content="且听风吟">
-<meta property="og:description" content="一、call,apply,bindcall与apply的使用">
-<meta property="og:updated_time" content="2016-09-17T02:39:17.086Z">
+<meta property="og:description" content="闭包出现的原因？  现在我们要设计一个函数，使一个变量累加，当然要实现这个功能，一般情况下我们想到的会是全局变量，如下：">
+<meta property="og:image" content="http://7xt1hs.com1.z0.glb.clouddn.com/return1.png">
+<meta property="og:image" content="http://7xt1hs.com1.z0.glb.clouddn.com/return2.png">
+<meta property="og:image" content="http://7xt1hs.com1.z0.glb.clouddn.com/return3.png">
+<meta property="og:updated_time" content="2016-09-17T04:40:39.266Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS原型链的继承">
-<meta name="twitter:description" content="一、call,apply,bindcall与apply的使用">
+<meta name="twitter:title" content="JS的闭包">
+<meta name="twitter:description" content="闭包出现的原因？  现在我们要设计一个函数，使一个变量累加，当然要实现这个功能，一般情况下我们想到的会是全局变量，如下：">
+<meta name="twitter:image" content="http://7xt1hs.com1.z0.glb.clouddn.com/return1.png">
 
 
 
@@ -107,7 +111,7 @@
   };
 </script>
 
-  <title> JS原型链的继承 | 且听风吟 </title>
+  <title> JS的闭包 | 且听风吟 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -277,7 +281,7 @@
             
             
               
-                JS原型链的继承
+                JS的闭包
               
             
           </h1>
@@ -289,8 +293,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-16T22:45:41+08:00" content="2016-09-16">
-              2016-09-16
+            <time itemprop="dateCreated" datetime="2016-09-17T10:02:25+08:00" content="2016-09-17">
+              2016-09-17
             </time>
           </span>
 
@@ -319,8 +323,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/09/16/prototype-chain/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/16/prototype-chain/" itemprop="commentsCount"></span>
+                <a href="/2016/09/17/JS-closure/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/17/JS-closure/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -330,7 +334,7 @@
 
           
           
-             <span id="/2016/09/16/prototype-chain/" class="leancloud_visitors" data-flag-title="JS原型链的继承">
+             <span id="/2016/09/17/JS-closure/" class="leancloud_visitors" data-flag-title="JS的闭包">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -352,212 +356,87 @@
       
 
       
-        <h2 id="一、call-apply-bind"><a href="#一、call-apply-bind" class="headerlink" title="一、call,apply,bind"></a>一、call,apply,bind</h2><p>call与apply的使用<br><a id="more"></a><br>(1)call(thisArgs [,args…])<br>Example：</p>
-<pre><code class="javascript"><span class="keyword">var</span> a = {
-    name:<span class="string">'Hxiaomin'</span>, 
-    say:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{ 
-        <span class="built_in">console</span>.log(<span class="string">"Hi,I'm Hxiaomin!"</span>);
-    }
-};
-
-<span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params">name</span>)</span>{
-    <span class="built_in">console</span>.log(<span class="string">"I'm "</span>+ name);
-    <span class="keyword">this</span>.say();
+        <h2 id="闭包出现的原因？"><a href="#闭包出现的原因？" class="headerlink" title="闭包出现的原因？"></a>闭包出现的原因？</h2><p>  现在我们要设计一个函数，使一个变量累加，当然要实现这个功能，一般情况下我们想到的会是全局变量，如下：<br><a id="more"></a></p>
+<pre><code class="javascript"><span class="keyword">var</span> a=<span class="number">0</span>;
+<span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"></span>)</span>{
+    <span class="built_in">console</span>.log(++a);
 }
-
-b.call(a,<span class="string">'test'</span>);
+add();     <span class="comment">//每次执行add函数，就可以实现a的累加</span>
 </code></pre>
-<p>(2)apply(thisArgs[,args[]])<br>Example：</p>
-<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params">x,y,z</span>)</span>{
-    <span class="built_in">console</span>.log(x,y,z);
-}
-
-b.apply(<span class="literal">null</span>,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]); <span class="comment">// 1 2 3</span>
-</code></pre>
-<p>apply和call的唯一区别是第二个参数的传递方式不同，apply的第二个参数必须是一个数组，而call允许传递一个参数列表。<br>(3)bind(thisArgs [,args…])<br>ES5引入bind的真正目的是为了弥补call/apply的不足，由于call/apply会对目标函数自动执行，从而导致它无法在事件绑定函数中使用，因为事件绑定函数不需要我们手动执行，它是在事件被触发时由JS内部自动执行的。而bind在实现改变函数this的同时又不会自动执行目标函数。<br>Example：</p>
-<pre><code class="javascript"><span class="keyword">var</span> obj = {name:<span class="string">'Hxiaomin'</span>};
-
-<span class="comment">/**
-* 给document添加click事件监听，并绑定onClick函数
-* 通过bind方法设置onClick的this为obj，并传递参数p1,p2
-*/</span>
-<span class="built_in">document</span>.addEventListener(<span class="string">'click'</span>,onClick.bind(obj,<span class="string">'p1'</span>,<span class="string">'p2'</span>),<span class="literal">false</span>);
-
-<span class="comment">//当点击网页时触发并执行</span>
-<span class="function"><span class="keyword">function</span> <span class="title">onClick</span>(<span class="params">a,b</span>)</span>{
-    <span class="built_in">console</span>.log(
-            <span class="keyword">this</span>.name, 
-            a, <span class="comment">//p1</span>
-            b  <span class="comment">//p2</span>
-    )
-}
-</code></pre>
-<h2 id="二、this-prototype-constructor"><a href="#二、this-prototype-constructor" class="headerlink" title="二、this,prototype,constructor"></a>二、this,prototype,constructor</h2><p>(1)this<br>apply和call可以改变this的指向</p>
-<pre><code class="javascript"><span class="comment">// 定义一个全局函数</span>
-<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>{
-    <span class="built_in">console</span>.log(<span class="keyword">this</span>.person);
-}
-
-<span class="comment">// 定义一个全局变量</span>
-<span class="keyword">var</span> person = <span class="string">"you"</span>;
-<span class="comment">// 自定义一个对象</span>
-<span class="keyword">var</span> myself = {
-    person: <span class="string">"me"</span>
-};
-
-<span class="comment">// 等价于window.foo();</span>
-foo.apply(<span class="built_in">window</span>);  <span class="comment">// "you"</span>
-<span class="comment">// 此时foo中的this === myself</span>
-foo.apply(myself);    <span class="comment">// "me"</span>
-</code></pre>
-<p>(2)prototype<br>可用于构造函数的扩展函数，也可在Array等的原型中添加扩展方法<br>(3)constructor<br>javascript中的类型</p>
-<pre><code>* Number（数字）
-* String（字符串）
-* Boolean（布尔）
-* Symbol（符号）（第六版新增）
-* Object（对象）
-    * Function（函数）
-    * Array（数组）
-    * Date（日期）
-    * RegExp（正则表达式）
-* Null（空）
-* Undefined（未定义）
-</code></pre><p>这里有个比较奇怪的现象</p>
-<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>{
-        <span class="keyword">this</span>.name = name;
-};
-Person.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
-    <span class="keyword">return</span> <span class="keyword">this</span>.name;
-};
-<span class="keyword">var</span> p = <span class="keyword">new</span> Person(<span class="string">"Hxiaomin"</span>);
-
-<span class="built_in">console</span>.log(p.constructor === Person);  <span class="comment">// true</span>
-<span class="built_in">console</span>.log(Person.prototype.constructor === Person); <span class="comment">// true</span>
-<span class="built_in">console</span>.log(p.constructor.prototype.constructor === Person); <span class="comment">// true</span>
-</code></pre>
-<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>{
-        <span class="keyword">this</span>.name = name;
-};
-Person.prototype = {
-    getName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
-        <span class="keyword">return</span> <span class="keyword">this</span>.name;
-    }
-};
-<span class="comment">// Person.prototype.constructor = Person; 加入这行代码可以解决这个问题</span>
-<span class="keyword">var</span> p = <span class="keyword">new</span> Person(<span class="string">"Hxiaomin"</span>);
-
-<span class="built_in">console</span>.log(p.constructor === Person);  <span class="comment">// false</span>
-<span class="built_in">console</span>.log(Person.prototype.constructor === Person); <span class="comment">// false</span>
-<span class="built_in">console</span>.log(p.constructor.prototype.constructor === Person); <span class="comment">// false</span>
-</code></pre>
-<p>出现这个现象有高人给出的见解是酱紫的</p>
-<pre><code class="javascript">Person.prototype = <span class="keyword">new</span> <span class="built_in">Object</span>({
-    getName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
-        <span class="keyword">return</span> <span class="keyword">this</span>.name;
-    }
-});
-</code></pre>
-<p>此时Person.prototype.constructor === Object<br>另外的解决方法</p>
-<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>{
-    <span class="keyword">this</span>.name = name;
-};
-Person.prototype = {
-      <span class="keyword">constructor</span>:Person,//指定<span class="keyword">constructor</span>
-    getName: function() {
-        <span class="keyword">return</span> <span class="keyword">this</span>.name;
-    }
-};
-</code></pre>
-<h2 id="三、JS定义类的几种方法"><a href="#三、JS定义类的几种方法" class="headerlink" title="三、JS定义类的几种方法"></a>三、JS定义类的几种方法</h2><p>(1)构造函数法</p>
-<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>{
-        <span class="keyword">this</span>.name = name;
-};
-Person.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
-    <span class="keyword">return</span> <span class="keyword">this</span>.name;
-};
-<span class="keyword">var</span> p = <span class="keyword">new</span> Person(<span class="string">"Hxiaomin"</span>);
-</code></pre>
-<p>(2)Object.create()</p>
-<pre><code class="javascript"><span class="keyword">var</span> person={
-    name:<span class="string">"aaa"</span>,
-    getName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
-        <span class="keyword">return</span> <span class="keyword">this</span>.name;
+<p>  但是这种情况的实现有点烦的是a是全局变量，容易污染环境，或者说它只能出现一次，在其他的函数里面要尽量避免变<br>  a。<br>  恩，这就是闭包出现的原因了~~<br>  闭包可以用局部变量实现累加，保持该局部变量的状态，而又不污染环境，如下：</p>
+<pre><code class="javascript">
+<span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"></span>)</span>{
+    <span class="keyword">var</span> a=<span class="number">0</span>;
+    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        <span class="keyword">return</span> ++a;
     }
 }
-<span class="keyword">var</span> myperson = <span class="built_in">Object</span>.create(person);
-myperson.name=<span class="string">"Hxiaomin"</span>;
-myperson.getName();
+<span class="keyword">var</span> fff=add();
+<span class="built_in">console</span>.log(fff());     <span class="comment">//每次执行add函数，就可以实现a的累加</span>
 </code></pre>
-<p>若想将getName作为私有函数</p>
-<pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params">name</span>)</span>{
-    <span class="keyword">return</span> <span class="keyword">this</span>.name=name;
-}
-<span class="keyword">var</span> person={
-    name:<span class="string">"aaa"</span>,
-    getPerson: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
-        <span class="keyword">return</span> getName.call(<span class="keyword">this</span>,<span class="keyword">this</span>.name);
-    }
-}
-<span class="keyword">var</span> myperson = <span class="built_in">Object</span>.create(person);
-myperson.name=<span class="string">"Hxiaomin"</span>;
-myperson.getPerson();
+<p>  诶！你酱紫不是又多了全局变量fff吗,请注意哦，这里的fff是函数，如果觉得不管如何函数名感觉太多了，其实也可以减少，如下：</p>
+<pre><code class="javascript"><span class="keyword">var</span> add=(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+    <span class="keyword">var</span> a=<span class="number">0</span>;
+    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        <span class="keyword">return</span> ++a;
+    } 
+})();
+
+<span class="built_in">console</span>.log(add());    <span class="comment">//1</span>
+<span class="built_in">console</span>.log(add());    <span class="comment">//2</span>
 </code></pre>
-<p>ps:这里顺便提一下定义私有函数的方法<br>上面是一种方法，还有es6使用Symbol的方法</p>
-<pre><code class="javascript"><span class="keyword">const</span> bar = <span class="built_in">Symbol</span>(<span class="string">'bar'</span>);
-<span class="keyword">const</span> snaf = <span class="built_in">Symbol</span>(<span class="string">'snaf'</span>);
+<p>  such as each coin has two sides！<br>  是的，闭包也有弊端！<br>  由于局部变量状态要保持，所以浏览器无法对其进行回收，这意味着这个局部变量要一直占着内存，如果内存分配不当，就很容易造成内存泄漏，这个在ie中发生的概率很大很大。。。这个要使内存不泄露的话就要控制好变量对内存的占用了，当变量不用被用到的时候，就取消它对内存的占用，如下：</p>
+<pre><code class="javascript"><span class="keyword">var</span> add=(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+    <span class="keyword">var</span> a=<span class="number">0</span>;
+    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        <span class="keyword">return</span> ++a;
+    } 
+})();
 
-<span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">myClass</span></span>{
-
-  <span class="comment">// 公有方法</span>
-  foo(baz) {
-    <span class="keyword">this</span>[bar](baz);
-  }
-
-  <span class="comment">// 私有方法</span>
-  [bar](baz) {
-    <span class="keyword">return</span> <span class="keyword">this</span>[snaf] = baz;
-  }
-
-  <span class="comment">// ...</span>
-};
+<span class="built_in">console</span>.log(add());  <span class="comment">//1</span>
+add=<span class="literal">null</span>;
+<span class="built_in">console</span>.log(add());   <span class="comment">//add is not a function</span>
 </code></pre>
-<p>上面代码中，bar和snaf都是Symbol值，导致第三方无法获取到它们，因此达到了私有方法和私有属性的效果。</p>
-<p>(3)极简主义</p>
-<pre><code class="javascript"><span class="keyword">var</span> person={
-    createPerson: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
-        <span class="keyword">var</span> people={};
-        people.name=<span class="string">"Hxiaomin"</span>;
-        people.getName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
-            <span class="keyword">return</span> <span class="keyword">this</span>.name;
-        }
-        <span class="keyword">return</span> people;
-    }
-}
-<span class="keyword">var</span> person1=person.createPerson();
-person1.getName();
-</code></pre>
-<p>极简主义中的继承</p>
-<pre><code class="javascript"><span class="keyword">var</span> Animal={
-        createAnimal: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
-            <span class="keyword">var</span> people={};
-            people.name=<span class="string">"Hxiaomin"</span>;
-            people.getName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
-                <span class="keyword">return</span> <span class="keyword">this</span>.name;
-            }
-            <span class="keyword">return</span> people;
-        }
+<h2 id="什么是内存的泄漏呢？"><a href="#什么是内存的泄漏呢？" class="headerlink" title="什么是内存的泄漏呢？"></a>什么是内存的泄漏呢？</h2><p>首先我们了解一下内存回收机制?<br>回收机制共两种：<br>(1) 标记清除<br>  很多浏览器的内存回收机制都是这一种，当然这里肯定是除了ie。<br>  当变量进入执行环境的时候，比如函数中声明一个变量，垃圾回收器将其标记为“进入环境”，当变量离开环境的时候（函数执行结束）将其标记为“离开环境”。<br>(2) 引用计数<br>  内存泄露一般发生在ie。<br>  引用计数的策略是跟踪记录每个值被使用的次数，当声明了一个变量并将一个引用类型赋值给该变量的时候，这个值的引用次数就加1，如果该变量的值变成了另外一个，则这个值得引用次数减1，当这个值的引用次数变为0的时候，说明没有变量在使用，这个值没法被访问了，因此可以将其占用的空间回收，这样垃圾回收器会在运行的时候清理掉引用次数为0的值占用的空间。<br>  在IE中虽然JavaScript对象通过标记清除的方式进行垃圾回收，但BOM与DOM对象却是通过引用计数回收垃圾的， 也就是说只要涉及BOM及DOM就会出现循环引用问题。<br>  所以记得把BOM和DOM不用的时候变为null，如下：</p>
+<pre><code class="javascript"><span class="comment">//最后应将oDiv解除引用来避免内存泄露</span>
+<span class="function"><span class="keyword">function</span> <span class="title">closure</span>(<span class="params"></span>)</span>{
+    <span class="keyword">var</span> oDiv = <span class="built_in">document</span>.getElementById(<span class="string">'oDiv'</span>);
+    <span class="keyword">var</span> test = oDiv.innerHTML;
+    oDiv.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+        alert(test);
     };
-
-<span class="keyword">var</span> Person= {
-　　　　creatFn: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
-　　　　　　<span class="keyword">var</span> person = Animal.createAnimal();
-　　　　　　person.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{ <span class="built_in">console</span>.log(<span class="string">"Hi,my name is "</span>+<span class="keyword">this</span>.name) };
-　　　　　　<span class="keyword">return</span> person;
-　　　　}
-　　};
-<span class="keyword">var</span> person1= Person.creatFn();
-　　person1.say();
+    oDiv = <span class="literal">null</span>;
+}
 </code></pre>
+<h2 id="各路大神想出的JS闭包坑爹笔试题目，真是没有什么做不到，只有你想不到。"><a href="#各路大神想出的JS闭包坑爹笔试题目，真是没有什么做不到，只有你想不到。" class="headerlink" title="各路大神想出的JS闭包坑爹笔试题目，真是没有什么做不到，只有你想不到。"></a>各路大神想出的JS闭包坑爹笔试题目，真是没有什么做不到，只有你想不到。</h2><pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>{
+    getName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{ alert (<span class="number">1</span>); };     <span class="comment">//注意这里没有var，向上是window</span>
+    <span class="keyword">return</span> <span class="keyword">this</span>;
+}
+Foo.getName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{ alert (<span class="number">2</span>);};
+Foo.prototype.getName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{ alert (<span class="number">3</span>);};
+<span class="keyword">var</span> getName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{ alert (<span class="number">4</span>);};   <span class="comment">//函数表达式</span>
+<span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params"></span>) </span>{ alert (<span class="number">5</span>);}       <span class="comment">//函数声明</span>
+
+<span class="comment">//请写出以下输出结果：</span>
+Foo.getName();     <span class="comment">//2</span>
+getName();         <span class="comment">//4(变量声明提升，函数表达式)</span>
+Foo().getName();   <span class="comment">//1(this的指向是由所在函数的调用方式决定的。而此处的直接调用方式，this指向window对象。)</span>
+getName();        <span class="comment">//1(执行Foo()后，若window对象中也没有getName属性，就在window对象中创建一个getName变量，window的getName()已经被改)</span>
+<span class="keyword">new</span> Foo.getName();      <span class="comment">//2(运算符优先级，new (Foo.getName)();)</span>
+<span class="keyword">new</span> Foo().getName();    <span class="comment">//3((new Foo()).getName())</span>
+<span class="keyword">new</span> <span class="keyword">new</span> Foo().getName();    <span class="comment">//3(new ((new Foo()).getName)();)</span>
+</code></pre>
+<h2 id="函数表达式的执行-会把一条语句弄成两条执行。"><a href="#函数表达式的执行-会把一条语句弄成两条执行。" class="headerlink" title="函数表达式的执行,会把一条语句弄成两条执行。"></a>函数表达式的执行,会把一条语句弄成两条执行。</h2><pre><code class="javascript"><span class="built_in">console</span>.log(x);<span class="comment">//输出：function x(){}</span>
+<span class="keyword">var</span> x=<span class="number">1</span>;
+<span class="function"><span class="keyword">function</span> <span class="title">x</span>(<span class="params"></span>)</span>{}
+
+执行顺序:
+<span class="keyword">var</span> x;
+<span class="function"><span class="keyword">function</span> <span class="title">x</span>(<span class="params"></span>)</span>{}
+<span class="built_in">console</span>.log(x);
+x=<span class="number">1</span>;
+</code></pre>
+<h2 id="构造函数的返回值"><a href="#构造函数的返回值" class="headerlink" title="构造函数的返回值"></a>构造函数的返回值</h2><p><a href="http://7xt1hs.com1.z0.glb.clouddn.com/return1.png" target="_blank" rel="external">1.没有返回值则按照其他语言一样返回实例化对象。</a><br><img src="http://7xt1hs.com1.z0.glb.clouddn.com/return1.png" alt=""><br><a href="http://7xt1hs.com1.z0.glb.clouddn.com/return2.png" target="_blank" rel="external">2.若有返回值则检查其返回值是否为引用类型。如果是非引用类型，如基本类型（string,number,boolean,null,undefined）则与无返回值相同，实际返回其实例化对象。</a><br><img src="http://7xt1hs.com1.z0.glb.clouddn.com/return2.png" alt=""><br><a href="http://7xt1hs.com1.z0.glb.clouddn.com/return3.png" target="_blank" rel="external">3.若返回值是引用类型，则实际返回值为这个引用类型。</a><br>wochengrenwozuowanyijingkaishihuaiyirenshengle.<br><img src="http://7xt1hs.com1.z0.glb.clouddn.com/return3.png" alt=""><br>wochengrenwozuowanyijingkaishihuaiyirenshengle.</p>
 <h2 id="最后，如有问题请大神指正"><a href="#最后，如有问题请大神指正" class="headerlink" title="最后，如有问题请大神指正~~"></a>最后，如有问题请大神指正~~</h2>
       
     </div>
@@ -601,16 +480,6 @@ person1.getName();
           
             <a href="/tags/javascript/" rel="tag">#javascript</a>
           
-            <a href="/tags/this/" rel="tag">#this</a>
-          
-            <a href="/tags/prototype/" rel="tag">#prototype</a>
-          
-            <a href="/tags/constructor/" rel="tag">#constructor</a>
-          
-            <a href="/tags/call/" rel="tag">#call</a>
-          
-            <a href="/tags/apply/" rel="tag">#apply</a>
-          
         </div>
       
 
@@ -618,17 +487,13 @@ person1.getName();
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/16/react-1/" rel="next" title="react深层次的理解">
-                <i class="fa fa-chevron-left"></i> react深层次的理解
+              <a href="/2016/09/16/prototype-chain/" rel="next" title="JS原型链的继承">
+                <i class="fa fa-chevron-left"></i> JS原型链的继承
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/17/JS-closure/" rel="prev" title="JS的闭包">
-                JS的闭包 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -680,8 +545,8 @@ person1.getName();
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/09/16/prototype-chain/"
-           data-title="JS原型链的继承" data-url="http://Hxiaomin.github.io/2016/09/16/prototype-chain/">
+      <div class="ds-thread" data-thread-key="2016/09/17/JS-closure/"
+           data-title="JS的闭包" data-url="http://Hxiaomin.github.io/2016/09/17/JS-closure/">
       </div>
     
   </div>
@@ -801,7 +666,7 @@ person1.getName();
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、call-apply-bind"><span class="nav-number">1.</span> <span class="nav-text">一、call,apply,bind</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、this-prototype-constructor"><span class="nav-number">2.</span> <span class="nav-text">二、this,prototype,constructor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、JS定义类的几种方法"><span class="nav-number">3.</span> <span class="nav-text">三、JS定义类的几种方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后，如有问题请大神指正"><span class="nav-number">4.</span> <span class="nav-text">最后，如有问题请大神指正~~</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包出现的原因？"><span class="nav-number">1.</span> <span class="nav-text">闭包出现的原因？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是内存的泄漏呢？"><span class="nav-number">2.</span> <span class="nav-text">什么是内存的泄漏呢？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#各路大神想出的JS闭包坑爹笔试题目，真是没有什么做不到，只有你想不到。"><span class="nav-number">3.</span> <span class="nav-text">各路大神想出的JS闭包坑爹笔试题目，真是没有什么做不到，只有你想不到。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数表达式的执行-会把一条语句弄成两条执行。"><span class="nav-number">4.</span> <span class="nav-text">函数表达式的执行,会把一条语句弄成两条执行。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造函数的返回值"><span class="nav-number">5.</span> <span class="nav-text">构造函数的返回值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后，如有问题请大神指正"><span class="nav-number">6.</span> <span class="nav-text">最后，如有问题请大神指正~~</span></a></li></ol></div>
             
           </div>
         </section>
