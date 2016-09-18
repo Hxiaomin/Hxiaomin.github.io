@@ -83,7 +83,7 @@
 <meta name="description" content="生如夏花之绚烂，死如秋叶之静美">
 <meta property="og:type" content="website">
 <meta property="og:title" content="且听风吟">
-<meta property="og:url" content="http://Hxiaomin.github.io/tags/javascript/index.html">
+<meta property="og:url" content="http://Hxiaomin.github.io/tags/JavaScript/index.html">
 <meta property="og:site_name" content="且听风吟">
 <meta property="og:description" content="生如夏花之绚烂，死如秋叶之静美">
 <meta name="twitter:card" content="summary">
@@ -106,7 +106,7 @@
   };
 </script>
 
-  <title> 标签: javascript | 且听风吟 </title>
+  <title> 标签: JavaScript | 且听风吟 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -258,7 +258,7 @@
   <div id="posts" class="posts-collapse">
     <div class="collection-title">
       <h2 >
-        javascript
+        JavaScript
         <small>标签</small>
       </h2>
     </div>
@@ -271,9 +271,9 @@
 
       <h1 class="post-title">
         
-            <a class="post-title-link" href="/2016/09/17/JS-closure/" itemprop="url">
+            <a class="post-title-link" href="/2016/09/17/JS-API/" itemprop="url">
               
-                <span itemprop="name">JS的闭包</span>
+                <span itemprop="name">简易的JavaScript-API</span>
               
             </a>
         
@@ -281,37 +281,9 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-17T10:02:25+08:00"
+              datetime="2016-09-17T14:19:47+08:00"
               content="2016-09-17" >
           09-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/09/16/prototype-chain/" itemprop="url">
-              
-                <span itemprop="name">JS原型链的继承</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-16T22:45:41+08:00"
-              content="2016-09-16" >
-          09-16
         </time>
       </div>
 
@@ -361,7 +333,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -378,7 +350,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -634,6 +606,36 @@
               success: function(newcounter) {
                 var $element = $(document.getElementById(url));
                 $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
+.find('.leancloud-visitors-count').text(newcounter.get('time'));
               },
               error: function(newcounter, error) {
                 console.log('Failed to create');
