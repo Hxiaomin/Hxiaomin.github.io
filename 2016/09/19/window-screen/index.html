@@ -1,0 +1,958 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="window,screen,element," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="http://7xt1hs.com1.z0.glb.clouddn.com/avatar.jpg?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="window">
+<meta property="og:type" content="article">
+<meta property="og:title" content="window,screen,element中不易辨别的属性">
+<meta property="og:url" content="http://Hxiaomin.github.io/2016/09/19/window-screen/index.html">
+<meta property="og:site_name" content="且听风吟">
+<meta property="og:description" content="window">
+<meta property="og:image" content="http://7xt1hs.com1.z0.glb.clouddn.com/wse1.png">
+<meta property="og:image" content="http://7xt1hs.com1.z0.glb.clouddn.com/wse2.png">
+<meta property="og:image" content="http://7xt1hs.com1.z0.glb.clouddn.com/wse3.png">
+<meta property="og:updated_time" content="2016-09-19T07:44:29.754Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="window,screen,element中不易辨别的属性">
+<meta name="twitter:description" content="window">
+<meta name="twitter:image" content="http://7xt1hs.com1.z0.glb.clouddn.com/wse1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> window,screen,element中不易辨别的属性 | 且听风吟 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?d5cc679d47d71300820a5285c4941719";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">且听风吟</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">如果人生是一朵花，那么总会有花开花谢的时候，如果人生是一场梦，那么总会有梦醒时分</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'cka6ssTTUoDSTeUfiStx','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                window,screen,element中不易辨别的属性
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-19T13:00:20+08:00" content="2016-09-19">
+              2016-09-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/IT/" itemprop="url" rel="index">
+                    <span itemprop="name">IT</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/19/window-screen/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/19/window-screen/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/09/19/window-screen/" class="leancloud_visitors" data-flag-title="window,screen,element中不易辨别的属性">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="window"><a href="#window" class="headerlink" title="window"></a>window</h2><a id="more"></a>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>兼容</th>
+<th>使用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>window.innerWidth/innerHeight</td>
+<td>浏览器可见区域的内宽度、高度（不含浏览器的边框，但包含滚动条）</td>
+<td>ie9/10、chrome、firefox</td>
+<td>假设缩放浏览器的宽度为1000px，高度为500px<br>alert(window.innerWidth); <br>//chrome/firefox/ie9/10=&gt;1000 <br>//ie6/7/8=&gt;undefined <br>alert(window.innerHeight); <br>//chrome/firefox/ie9/10=&gt;500 <br>//ie6/7/8=&gt;undefined<br></td>
+</tr>
+<tr>
+<td>window.outerWidth/outerHeight</td>
+<td>浏览器外宽度（包含浏览器的边框，因各个浏览器的边框边一样，得到的值也是不一样的）。</td>
+<td>ie9/10、chrome、firefox</td>
+<td>假设缩放浏览器的宽度为1000px，高度为500px<br>alert(window.outerWidth); <br>// chrome/firefox/ie9/10=&gt;1002 <br>// ie6/7/8=&gt;undefined <br>alert(window.outerHeight); <br>// chrome/firefox/ie9/10=&gt;502 <br>// ie6/7/8=&gt;undefined</td>
+</tr>
+<tr>
+<td>window.screenLeft/screenTop</td>
+<td>浏览器的位移，表示ie浏览器的内边缘距离屏幕边缘的距离,chrome浏览器的外边缘距离屏幕边缘的距离。</td>
+<td>ie6/7/8/9/10、chrome。</td>
+<td>alert(window.screenLeft);<br> // ie=&gt;87 <br>// chrome=&gt;86 <br>// firefox=&gt;undefined <br>alert(window.screenTop); <br>// ie=&gt;87 <br>// chrome=&gt;86 <br>// firefox=&gt;undefined</td>
+</tr>
+<tr>
+<td>window.screenX/screenY</td>
+<td>浏览器的位移，表示：ie9/10浏览器的外边缘距离屏幕边缘的距离,chrome浏览器的外边缘距离屏幕边缘的距离。</td>
+<td>ie9/10、chrome、firefox</td>
+<td>alert(window.screenX); <br>// chrome/firefox=&gt;86 <br>// ie9/10=&gt;79 <br>// ie6/7/8=&gt;undefined <br>alert(window.screenY);<br> // chrome/firefox=&gt;86 <br>// ie9/10=&gt;79 <br>// ie6/7/8=&gt;undefined</td>
+</tr>
+<tr>
+<td>window.pageXOffset/pageYOffset</td>
+<td>表示浏览器X轴（水平）、Y轴（垂直）滚动条的偏移距离。</td>
+<td>ie9/10、chrome、firefox</td>
+<td>document.onclick=function(){ <br>alert(window.pageXOffset); <br>// chrome=&gt;200 <br>// firefox=&gt;200 <br>// ie9/10=&gt;200 <br>// ie6/7/8=&gt;undefined <br>alert(window.pageYOffset); <br>// chrome=&gt;200 <br>// firefox=&gt;200<br> // ie9/10=&gt;200 <br>// ie6/7/8=&gt;undefined };</td>
+</tr>
+<tr>
+<td>window.scrollX/scrollY</td>
+<td>表示浏览器X轴（水平）、Y轴（垂直）滚动条的偏移距离。chrome和firefox中window.pageXOffset和window.scrollX是相等的</td>
+<td>chrome、firefox</td>
+<td>document.onclick=function(){ <br>alert(window.pageXOffset); <br>// chrome=&gt;200 <br>// firefox=&gt;200 <br>// ie9/10=&gt;200 <br>// ie6/7/8=&gt;undefined <br>alert(window.pageYOffset); <br>// chrome=&gt;200 <br>// firefox=&gt;200<br> // ie9/10=&gt;200 <br>// ie6/7/8=&gt;undefined };</td>
+</tr>
+</tbody>
+</table>
+<h2 id="screen"><a href="#screen" class="headerlink" title="screen"></a>screen</h2><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>兼容</th>
+<th>使用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>screen.width/height</td>
+<td>屏幕的宽度、高度（指的是屏幕的分辨率，单位为像素）</td>
+<td>ie6/7/8/9/10、chrome、firefox</td>
+<td>假设屏幕的分辨率为1440×900<br>alert(screen.width); <br>// chrome/firefox/ie6/7/8/9/10=&gt;1440 <br>alert(screen.height); <br>// chrome/firefox/ie6/7/8/9/10=&gt;900</td>
+</tr>
+<tr>
+<td>screen.availWidth/availHeight</td>
+<td>屏幕的可用宽度、高度（通常与屏幕的宽度、高度一致）</td>
+<td>ie6/7/8/9/10、chrome、firefox</td>
+<td>alert(screen.width); <br>// chrome/firefox/ie6/7/8/9/10=&gt;1440 <br>alert(screen.height); <br>// chrome/firefox/ie6/7/8/9/10=&gt;900</td>
+</tr>
+</tbody>
+</table>
+<h2 id="element"><a href="#element" class="headerlink" title="element"></a>element</h2><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>兼容</th>
+<th>使用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>elment.clientWidth/clientHeight</td>
+<td>有滚动条时：clientWidth=元素左内边距宽度+元素宽度+元素右内边距宽度-元素垂直滚动条宽度<br>无滚动条时：clientWidth=元素左内边距宽度+元素宽度+元素右内边距宽度</td>
+<td>chrome、firefox、ie6/7/8/9/10</td>
+<td><img src="http://7xt1hs.com1.z0.glb.clouddn.com/wse1.png" alt=""></td>
+</tr>
+<tr>
+<td>element.clientLeft/clientTop</td>
+<td>clientLeft为左边框宽度，clientTop为上边框宽度</td>
+<td>chrome、firefox、ie6/7/8/9/10</td>
+<td>// borderLeftWidth <br>alert(oDemo.clientLeft); <br>// =&gt;50 <br>// borderTopWidth <br>alert(oDemo.clientTop); <br>// =&gt;50</td>
+</tr>
+<tr>
+<td>element.offsetWidth/offsetHeight</td>
+<td>offsetWidth=元素左边框宽度+元素左内边距宽度+元素宽度+元素右内边距宽度+元素右边框宽度。</td>
+<td>chrome、firefox、ie6/7/8/9/10</td>
+<td>// borderLeftWidth+paddingLeftWidth+width+paddingRightWidth+borderRightWidth <br>alert(oDemo.offsetWidth); <br>// =&gt;50+60+100+60+50=320 <br>// borderTopWidth+paddingLeftWidth+width+paddingRightWidth+borderRightWidth <br>alert(oDemo.offsetWidth); <br>// =&gt;50+60+100+60+50=320</td>
+</tr>
+<tr>
+<td>element.offsetLeft/offsetTop</td>
+<td>chrome：offsetLeft=定位祖先左边框宽度+定位祖先元素左内边距宽度+左位移+左外边距宽度<br>ie6/7/8/9/10、firefox：offsetLeft=定位祖先元素左内边距宽度+左位移+左外边距宽度。</td>
+<td>chrome、firefox、ie6/7/8/9/10</td>
+<td><img src="http://7xt1hs.com1.z0.glb.clouddn.com/wse2.png" alt=""></td>
+</tr>
+<tr>
+<td>element.scrollWidth/scrollHeight</td>
+<td>有滚动条时：<br>chrome、firefox、ie8/9/10：左内边距宽度+内容宽度。<br>ie6/7：左内边距宽度+内容宽度+右内边距宽度（是由CSS的BUG引起）。<br>无滚动条时：<br>左内边距宽度+宽度+右内边距宽度。</td>
+<td>chrome、firefox、ie8/9/10、ie6/7（半兼容）</td>
+<td><img src="http://7xt1hs.com1.z0.glb.clouddn.com/wse3.png" alt=""></td>
+</tr>
+<tr>
+<td>element.scrollLeft/scrollTop</td>
+<td>获得水平、垂直滚动条的距离。</td>
+<td>chrome、firefox、ie6/7/8/9/10</td>
+<td>document.onclick=function(){ <br>// 水平滚动条左距离 <br>alert(oDemo.scrollLeft); <br>// 垂直滚动条上距离 <br>alert(oDemo.scrollTop); }</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://7xt1hs.com1.z0.glb.clouddn.com/wechat-reward-image.jpg" alt="紫音染月 WeChat Pay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>微信打赏</p>
+      </div>
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://7xt1hs.com1.z0.glb.clouddn.com/alipay-reward-image.jpg" alt="紫音染月 Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/window/" rel="tag">#window</a>
+          
+            <a href="/tags/screen/" rel="tag">#screen</a>
+          
+            <a href="/tags/element/" rel="tag">#element</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/19/Browser-API/" rel="next" title="简易的Browser-API">
+                <i class="fa fa-chevron-left"></i> 简易的Browser-API
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/19/DOM-API/" rel="prev" title="'DOM-API'">
+                'DOM-API' <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/19/window-screen/"
+           data-title="window,screen,element中不易辨别的属性" data-url="http://Hxiaomin.github.io/2016/09/19/window-screen/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xt1hs.com1.z0.glb.clouddn.com/avatar.jpg"
+               alt="紫音染月" />
+          <p class="site-author-name" itemprop="name">紫音染月</p>
+          <p class="site-description motion-element" itemprop="description">生如夏花之绚烂，死如秋叶之静美</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Hxiaomin" target="_blank" title="Github">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2378980251" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:1245537792@qq.com" target="_blank" title="Email">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  Email
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#window"><span class="nav-number">1.</span> <span class="nav-text">window</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#screen"><span class="nav-number">2.</span> <span class="nav-text">screen</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#element"><span class="nav-number">3.</span> <span class="nav-text">element</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016/04/15 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">紫音染月</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"Hxiaomin"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("cE5WUWWJTxrokSQ5c4RCmCnA-gzGzoHsz", "t9G8EDbi6WNXIPqX05MWb4nt");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

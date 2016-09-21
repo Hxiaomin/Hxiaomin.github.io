@@ -1,0 +1,1298 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Browser,Window,Navigator,Screen,History,Location," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="http://7xt1hs.com1.z0.glb.clouddn.com/avatar.jpg?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Window1.Window的属性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简易的Browser-API">
+<meta property="og:url" content="http://Hxiaomin.github.io/2016/09/19/Browser-API/index.html">
+<meta property="og:site_name" content="且听风吟">
+<meta property="og:description" content="Window1.Window的属性">
+<meta property="og:image" content="http://7xt1hs.com1.z0.glb.clouddn.com/location.png">
+<meta property="og:updated_time" content="2016-09-19T07:48:54.756Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="简易的Browser-API">
+<meta name="twitter:description" content="Window1.Window的属性">
+<meta name="twitter:image" content="http://7xt1hs.com1.z0.glb.clouddn.com/location.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 简易的Browser-API | 且听风吟 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?d5cc679d47d71300820a5285c4941719";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">且听风吟</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">如果人生是一朵花，那么总会有花开花谢的时候，如果人生是一场梦，那么总会有梦醒时分</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'cka6ssTTUoDSTeUfiStx','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                简易的Browser-API
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-19T09:42:53+08:00" content="2016-09-19">
+              2016-09-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/IT/" itemprop="url" rel="index">
+                    <span itemprop="name">IT</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/19/Browser-API/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/19/Browser-API/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/09/19/Browser-API/" class="leancloud_visitors" data-flag-title="简易的Browser-API">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Window"><a href="#Window" class="headerlink" title="Window"></a>Window</h2><h3 id="1-Window的属性"><a href="#1-Window的属性" class="headerlink" title="1.Window的属性"></a>1.Window的属性</h3><a id="more"></a>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>closed</td>
+<td>返回窗口是否已被关闭。</td>
+</tr>
+<tr>
+<td>defaultStatus</td>
+<td>设置或返回窗口状态栏中的默认文本。</td>
+</tr>
+<tr>
+<td>document</td>
+<td>对 Document 对象的只读引用。请参阅 Document 对象。</td>
+</tr>
+<tr>
+<td>history</td>
+<td>对 History 对象的只读引用。请参数 History 对象。</td>
+</tr>
+<tr>
+<td>innerheight</td>
+<td>返回窗口的文档显示区的高度。</td>
+</tr>
+<tr>
+<td>innerwidth</td>
+<td>返回窗口的文档显示区的宽度。</td>
+</tr>
+<tr>
+<td>length</td>
+<td>设置或返回窗口中的框架数量。</td>
+</tr>
+<tr>
+<td>location</td>
+<td>用于窗口或框架的 Location 对象。请参阅 Location 对象。</td>
+</tr>
+<tr>
+<td>name</td>
+<td>设置或返回窗口的名称。</td>
+</tr>
+<tr>
+<td>Navigator</td>
+<td>对 Navigator 对象的只读引用。请参数 Navigator 对象。</td>
+</tr>
+<tr>
+<td>opener</td>
+<td>返回对创建此窗口的窗口的引用。</td>
+</tr>
+<tr>
+<td>outerheight</td>
+<td>返回窗口的外部高度。</td>
+</tr>
+<tr>
+<td>outerwidth</td>
+<td>返回窗口的外部宽度。</td>
+</tr>
+<tr>
+<td>pageXOffset</td>
+<td>设置或返回当前页面相对于窗口显示区左上角的 X 位置。</td>
+</tr>
+<tr>
+<td>pageYOffset</td>
+<td>设置或返回当前页面相对于窗口显示区左上角的 Y 位置。</td>
+</tr>
+<tr>
+<td>scrollX</td>
+<td>设置或返回当前页面相对于窗口显示区左上角的 X 位置。</td>
+</tr>
+<tr>
+<td>scrollY</td>
+<td>设置或返回当前页面相对于窗口显示区左上角的 Y 位置。</td>
+</tr>
+<tr>
+<td>parent</td>
+<td>返回父窗口。</td>
+</tr>
+<tr>
+<td>Screen</td>
+<td>对 Screen 对象的只读引用。请参数 Screen 对象。</td>
+</tr>
+<tr>
+<td>self</td>
+<td>返回对当前窗口的引用。等价于 Window 属性。</td>
+</tr>
+<tr>
+<td>status</td>
+<td>设置窗口状态栏的文本。</td>
+</tr>
+<tr>
+<td>top</td>
+<td>返回最顶层的先辈窗口。</td>
+</tr>
+<tr>
+<td>window</td>
+<td>window 属性等价于 self 属性，它包含了对窗口自身的引用。</td>
+</tr>
+<tr>
+<td>screenLeft<br>screenTop<br>screenX<br>screenY</td>
+<td>只读整数。声明了窗口的左上角在屏幕上的的 x 坐标和 y 坐标。IE、Safari 和 Opera 支持 screenLeft 和 screenTop，而 Firefox 和 Safari 支持 screenX 和 screenY。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-Window的方法"><a href="#2-Window的方法" class="headerlink" title="2.Window的方法"></a>2.Window的方法</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+<th>语法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>alert()</td>
+<td>显示带有一段消息和一个确认按钮的警告框。</td>
+<td>alert(message),message为要在 window 上弹出的对话框中显示的纯文本</td>
+</tr>
+<tr>
+<td>blur()</td>
+<td>把键盘焦点从顶层窗口移开。</td>
+<td>哪个窗口最终获得键盘焦点并没有指定。</td>
+</tr>
+<tr>
+<td>setInterval()</td>
+<td>按照指定的周期（以毫秒计）来调用函数或计算表达式。（不停调用）</td>
+<td>setInterval(code,millisec[,”lang”]),code为要调用的函数或要执行的代码串;millisec为周期性执行或调用 code 之间的时间间隔，以毫秒计。</td>
+</tr>
+<tr>
+<td>setTimeout()</td>
+<td>在指定的毫秒数后调用函数或计算表达式。（调用一次）</td>
+<td>setTimeout(code,millisec),code为要调用的函数后要执行的 JavaScript 代码串;millisec为在执行代码前需等待的毫秒数。</td>
+</tr>
+<tr>
+<td>clearInterval()</td>
+<td>取消由 setInterval() 设置的 timeout。</td>
+<td>clearInterval(id),id为由 setInterval() 返回的 ID 值</td>
+</tr>
+<tr>
+<td>clearTimeout()</td>
+<td>取消由 setTimeout() 方法设置的 timeout。</td>
+<td>clearTimeout(id),id为由 setTimeout() 返回的 ID 值</td>
+</tr>
+<tr>
+<td>close()</td>
+<td>关闭浏览器窗口。</td>
+<td>window.close()</td>
+</tr>
+<tr>
+<td>confirm()</td>
+<td>显示带有一段消息以及确认按钮和取消按钮的对话框。</td>
+<td>confirm(message),message为要在 window 上弹出的对话框中显示的纯文本（而非 HTML 文本）</td>
+</tr>
+<tr>
+<td>createPopup()</td>
+<td>创建一个 pop-up 窗口。</td>
+<td>window.createPopup()</td>
+</tr>
+<tr>
+<td>focus()</td>
+<td>把键盘焦点给予一个窗口。</td>
+<td>window.focus()</td>
+</tr>
+<tr>
+<td>moveBy()</td>
+<td>可相对窗口的当前坐标把它移动指定的像素。</td>
+<td>window.moveBy(x,y),x为要把窗口右移的像素数,y为要把窗口下移的像素数</td>
+</tr>
+<tr>
+<td>moveTo()</td>
+<td>把窗口的左上角移动到一个指定的坐标。</td>
+<td>window.moveTo(x,y),x为窗口新位置的 x 坐标,y为窗口新位置的 y 坐标</td>
+</tr>
+<tr>
+<td>open()</td>
+<td>打开一个新的浏览器窗口或查找一个已命名的窗口。</td>
+<td>window.open(URL,name,features,replace),URL为要在新窗口中显示的文档的 URL;name为其中包括数字、字母和下划线，该字符声明了新窗口的名称;features为新窗口要显示的标准浏览器的特征(默认标准);replace为一个可选的布尔值。规定了装载到窗口的 URL 是在窗口的浏览历史中创建一个新条目，还是替换浏览历史中的当前条目。</td>
+</tr>
+<tr>
+<td>print()</td>
+<td>打印当前窗口的内容。</td>
+<td>会弹出打印框，还可以保存为pdf</td>
+</tr>
+<tr>
+<td>prompt()</td>
+<td>显示可提示用户输入的对话框。</td>
+<td>prompt(text,defaultText),text(可选)为要在对话框中显示的纯文本（而不是 HTML 格式的文本）;defaultText(可选)默认的输入文本。</td>
+</tr>
+<tr>
+<td>resizeBy()</td>
+<td>按照指定的像素调整窗口的大小。</td>
+<td>resizeBy(width,height);width为要使窗口宽度增加的像素数,height为要使窗口高度增加的像素数</td>
+</tr>
+<tr>
+<td>resizeTo()</td>
+<td>把窗口的大小调整到指定的宽度和高度。</td>
+<td>resizeTo(width,height),width(必须)为想要调整到的窗口的宽度,以像素计;height(可选)为想要调整到的窗口的高度,以像素计。</td>
+</tr>
+<tr>
+<td>scrollBy()</td>
+<td>按照指定的像素值来滚动内容。</td>
+<td>scrollBy(xnum,ynum),xnum(必需)把文档向右滚动的像素数。ynum(必需)把文档向下滚动的像素数。</td>
+</tr>
+<tr>
+<td>scrollTo()</td>
+<td>把内容滚动到指定的坐标。</td>
+<td>scrollTo(xpos,ypos),xpos(必需)要在窗口文档显示区左上角显示的文档的 x 坐标;ypos(必需)要在窗口文档显示区左上角显示的文档的 y 坐标。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Navigator"><a href="#Navigator" class="headerlink" title="Navigator"></a>Navigator</h2><h3 id="1-Navigator的属性"><a href="#1-Navigator的属性" class="headerlink" title="1.Navigator的属性"></a>1.Navigator的属性</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>appCodeName</td>
+<td>返回浏览器的代码名。</td>
+</tr>
+<tr>
+<td>appMinorVersion</td>
+<td>返回浏览器的次级版本。</td>
+</tr>
+<tr>
+<td>appName</td>
+<td>返回浏览器的名称。</td>
+</tr>
+<tr>
+<td>appVersion</td>
+<td>返回浏览器的平台和版本信息。</td>
+</tr>
+<tr>
+<td>browserLanguage</td>
+<td>返回当前浏览器的语言。</td>
+</tr>
+<tr>
+<td>cookieEnabled</td>
+<td>返回指明浏览器中是否启用 cookie 的布尔值。</td>
+</tr>
+<tr>
+<td>cpuClass</td>
+<td>返回浏览器系统的 CPU 等级。</td>
+</tr>
+<tr>
+<td>onLine</td>
+<td>返回指明系统是否处于脱机模式的布尔值。</td>
+</tr>
+<tr>
+<td>platform</td>
+<td>返回运行浏览器的操作系统平台。</td>
+</tr>
+<tr>
+<td>systemLanguage</td>
+<td>返回 OS 使用的默认语言。</td>
+</tr>
+<tr>
+<td>userAgent</td>
+<td>返回由客户机发送服务器的 user-agent 头部的值。</td>
+</tr>
+<tr>
+<td>userLanguage</td>
+<td>返回 OS 的自然语言设置。</td>
+</tr>
+</tbody>
+</table>
+<p>备注:经测试，appCodeName,appName,appVersion,cookieEnabled,onLine,platform,userAgent有数据返回，其他均返回undefined。</p>
+<h3 id="2-Navigator的方法"><a href="#2-Navigator的方法" class="headerlink" title="2.Navigator的方法"></a>2.Navigator的方法</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>javaEnabled()</td>
+<td>规定浏览器是否启用 Java。</td>
+</tr>
+<tr>
+<td>taintEnabled()</td>
+<td>规定浏览器是否启用数据污点 (data tainting)。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Screen"><a href="#Screen" class="headerlink" title="Screen"></a>Screen</h2><h3 id="1-Screen的属性"><a href="#1-Screen的属性" class="headerlink" title="1.Screen的属性"></a>1.Screen的属性</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>availHeight</td>
+<td>返回显示屏幕的高度 (除 Windows 任务栏之外)。</td>
+</tr>
+<tr>
+<td>availWidth</td>
+<td>返回显示屏幕的宽度 (除 Windows 任务栏之外)。</td>
+</tr>
+<tr>
+<td>bufferDepth</td>
+<td>设置或返回调色板的比特深度。</td>
+</tr>
+<tr>
+<td>colorDepth</td>
+<td>返回目标设备或缓冲器上的调色板的比特深度。</td>
+</tr>
+<tr>
+<td>deviceXDPI</td>
+<td>返回显示屏幕的每英寸水平点数。</td>
+</tr>
+<tr>
+<td>deviceYDPI</td>
+<td>返回显示屏幕的每英寸垂直点数。</td>
+</tr>
+<tr>
+<td>fontSmoothingEnabled</td>
+<td>返回用户是否在显示控制面板中启用了字体平滑。</td>
+</tr>
+<tr>
+<td>height</td>
+<td>返回显示屏幕的高度。</td>
+</tr>
+<tr>
+<td>logicalXDPI</td>
+<td>返回显示屏幕每英寸的水平方向的常规点数。</td>
+</tr>
+<tr>
+<td>logicalYDPI</td>
+<td>返回显示屏幕每英寸的垂直方向的常规点数。</td>
+</tr>
+<tr>
+<td>pixelDepth</td>
+<td>返回显示屏幕的颜色分辨率（比特每像素）。</td>
+</tr>
+<tr>
+<td>updateInterval</td>
+<td>设置或返回屏幕的刷新率。</td>
+</tr>
+<tr>
+<td>width</td>
+<td>返回显示器屏幕的宽度。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="History"><a href="#History" class="headerlink" title="History"></a>History</h2><h3 id="1-History的属性"><a href="#1-History的属性" class="headerlink" title="1.History的属性"></a>1.History的属性</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>length</td>
+<td>返回浏览器历史列表中的 URL 数量。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-History的方法"><a href="#2-History的方法" class="headerlink" title="2.History的方法"></a>2.History的方法</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>back()</td>
+<td>加载 history 列表中的前一个 URL。</td>
+</tr>
+<tr>
+<td>forward()</td>
+<td>加载 history 列表中的下一个 URL。</td>
+</tr>
+<tr>
+<td>go()</td>
+<td>加载 history 列表中的某个具体页面。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Location"><a href="#Location" class="headerlink" title="Location"></a>Location</h2><h3 id="1-Location的属性"><a href="#1-Location的属性" class="headerlink" title="1.Location的属性"></a>1.Location的属性</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hash</td>
+<td>设置或返回从井号 (#) 开始的 URL（锚）。</td>
+</tr>
+<tr>
+<td>host</td>
+<td>设置或返回主机名和当前 URL 的端口号。</td>
+</tr>
+<tr>
+<td>hostname</td>
+<td>设置或返回当前 URL 的主机名。</td>
+</tr>
+<tr>
+<td>href</td>
+<td>设置或返回完整的 URL。</td>
+</tr>
+<tr>
+<td>pathname</td>
+<td>设置或返回当前 URL 的路径部分。</td>
+</tr>
+<tr>
+<td>port</td>
+<td>设置或返回当前 URL 的端口号。</td>
+</tr>
+<tr>
+<td>protocol</td>
+<td>设置或返回当前 URL 的协议。</td>
+</tr>
+<tr>
+<td>search</td>
+<td>设置或返回从问号 (?) 开始的 URL（查询部分）。</td>
+</tr>
+</tbody>
+</table>
+<p>备注：<br><br><img src="http://7xt1hs.com1.z0.glb.clouddn.com/location.png" alt=""></p>
+<h3 id="2-Location的方法"><a href="#2-Location的方法" class="headerlink" title="2.Location的方法"></a>2.Location的方法</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>使用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>assign()</td>
+<td>加载新的文档。</td>
+<td>window.location.assign(URL)</td>
+</tr>
+<tr>
+<td>reload()</td>
+<td>重新加载当前文档。</td>
+<td>window.location.reload()</td>
+</tr>
+<tr>
+<td>replace()</td>
+<td>用新的文档替换当前文档。</td>
+<td>window.location.replace(URL)</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://7xt1hs.com1.z0.glb.clouddn.com/wechat-reward-image.jpg" alt="紫音染月 WeChat Pay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>微信打赏</p>
+      </div>
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://7xt1hs.com1.z0.glb.clouddn.com/alipay-reward-image.jpg" alt="紫音染月 Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Browser/" rel="tag">#Browser</a>
+          
+            <a href="/tags/Window/" rel="tag">#Window</a>
+          
+            <a href="/tags/Navigator/" rel="tag">#Navigator</a>
+          
+            <a href="/tags/Screen/" rel="tag">#Screen</a>
+          
+            <a href="/tags/History/" rel="tag">#History</a>
+          
+            <a href="/tags/Location/" rel="tag">#Location</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/17/JS-API/" rel="next" title="简易的JavaScript-API">
+                <i class="fa fa-chevron-left"></i> 简易的JavaScript-API
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/19/window-screen/" rel="prev" title="window,screen,element中不易辨别的属性">
+                window,screen,element中不易辨别的属性 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/19/Browser-API/"
+           data-title="简易的Browser-API" data-url="http://Hxiaomin.github.io/2016/09/19/Browser-API/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xt1hs.com1.z0.glb.clouddn.com/avatar.jpg"
+               alt="紫音染月" />
+          <p class="site-author-name" itemprop="name">紫音染月</p>
+          <p class="site-description motion-element" itemprop="description">生如夏花之绚烂，死如秋叶之静美</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Hxiaomin" target="_blank" title="Github">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2378980251" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:1245537792@qq.com" target="_blank" title="Email">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  Email
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Window"><span class="nav-number">1.</span> <span class="nav-text">Window</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Window的属性"><span class="nav-number">1.1.</span> <span class="nav-text">1.Window的属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Window的方法"><span class="nav-number">1.2.</span> <span class="nav-text">2.Window的方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Navigator"><span class="nav-number">2.</span> <span class="nav-text">Navigator</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Navigator的属性"><span class="nav-number">2.1.</span> <span class="nav-text">1.Navigator的属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Navigator的方法"><span class="nav-number">2.2.</span> <span class="nav-text">2.Navigator的方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Screen"><span class="nav-number">3.</span> <span class="nav-text">Screen</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Screen的属性"><span class="nav-number">3.1.</span> <span class="nav-text">1.Screen的属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#History"><span class="nav-number">4.</span> <span class="nav-text">History</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-History的属性"><span class="nav-number">4.1.</span> <span class="nav-text">1.History的属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-History的方法"><span class="nav-number">4.2.</span> <span class="nav-text">2.History的方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Location"><span class="nav-number">5.</span> <span class="nav-text">Location</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Location的属性"><span class="nav-number">5.1.</span> <span class="nav-text">1.Location的属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Location的方法"><span class="nav-number">5.2.</span> <span class="nav-text">2.Location的方法</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016/04/15 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">紫音染月</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"Hxiaomin"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("cE5WUWWJTxrokSQ5c4RCmCnA-gzGzoHsz", "t9G8EDbi6WNXIPqX05MWb4nt");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
