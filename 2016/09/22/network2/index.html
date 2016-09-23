@@ -1,0 +1,940 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="network,IP,ICMP,IGMP,RIP,OSPF,BGP,VPN,NAT," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="http://7xt1hs.com1.z0.glb.clouddn.com/avatar.jpg?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="介绍计算机网络中必备常识之网络层">
+<meta property="og:type" content="article">
+<meta property="og:title" content="network(2)之网络层">
+<meta property="og:url" content="https://Hxiaomin.github.io/2016/09/22/network2/index.html">
+<meta property="og:site_name" content="且听风吟">
+<meta property="og:description" content="介绍计算机网络中必备常识之网络层">
+<meta property="og:image" content="http://7xt1hs.com1.z0.glb.clouddn.com/network1-0.png">
+<meta property="og:image" content="http://7xt1hs.com1.z0.glb.clouddn.com/network1-8.png">
+<meta property="og:image" content="http://7xt1hs.com1.z0.glb.clouddn.com/network1-9.png">
+<meta property="og:image" content="http://7xt1hs.com1.z0.glb.clouddn.com/network1-10.png">
+<meta property="og:image" content="http://7xt1hs.com1.z0.glb.clouddn.com/network1-11.png">
+<meta property="og:image" content="http://7xt1hs.com1.z0.glb.clouddn.com/network1-13.png">
+<meta property="og:updated_time" content="2016-09-22T15:25:24.794Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="network(2)之网络层">
+<meta name="twitter:description" content="介绍计算机网络中必备常识之网络层">
+<meta name="twitter:image" content="http://7xt1hs.com1.z0.glb.clouddn.com/network1-0.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> network(2)之网络层 | 且听风吟 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?d5cc679d47d71300820a5285c4941719";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">且听风吟</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">如果人生是一朵花，那么总会有花开花谢的时候，如果人生是一场梦，那么总会有梦醒时分</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'cka6ssTTUoDSTeUfiStx','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                network(2)之网络层
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-22T22:12:54+08:00" content="2016-09-22">
+              2016-09-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/22/network2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/22/network2/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/09/22/network2/" class="leancloud_visitors" data-flag-title="network(2)之网络层">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>介绍计算机网络中必备常识之网络层</p>
+<a id="more"></a>
+<h2 id="OSI七层模型"><a href="#OSI七层模型" class="headerlink" title="OSI七层模型"></a>OSI七层模型</h2><p><img src="http://7xt1hs.com1.z0.glb.clouddn.com/network1-0.png" alt=""></p>
+<h2 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h2><h3 id="IP地址的数据格式"><a href="#IP地址的数据格式" class="headerlink" title="IP地址的数据格式"></a>IP地址的数据格式</h3><p><img src="http://7xt1hs.com1.z0.glb.clouddn.com/network1-8.png" alt=""></p>
+<h3 id="IP地址的分类"><a href="#IP地址的分类" class="headerlink" title="IP地址的分类"></a>IP地址的分类</h3><p><img src="http://7xt1hs.com1.z0.glb.clouddn.com/network1-9.png" alt=""></p>
+<h3 id="IP-地址-AND-子网掩码-网络地址"><a href="#IP-地址-AND-子网掩码-网络地址" class="headerlink" title="(IP 地址) AND (子网掩码) = 网络地址"></a>(IP 地址) AND (子网掩码) = 网络地址</h3><p><img src="http://7xt1hs.com1.z0.glb.clouddn.com/network1-10.png" alt=""></p>
+<h3 id="默认的子网掩码"><a href="#默认的子网掩码" class="headerlink" title="默认的子网掩码"></a>默认的子网掩码</h3><p><img src="http://7xt1hs.com1.z0.glb.clouddn.com/network1-11.png" alt=""></p>
+<h3 id="无分类编址CIDR"><a href="#无分类编址CIDR" class="headerlink" title="无分类编址CIDR"></a>无分类编址CIDR</h3><ul>
+<li>CIDR 消除了传统的 A 类、B 类和 C 类地址以及划分子网的概念，因而可以更加有效地分配 IPv4 的地址空间。</li>
+<li>CIDR使用各种长度的“网络前缀”(network-prefix)来代替分类地址中的网络号和子网号。</li>
+<li>IP 地址从三级编址（使用子网掩码）又回到了两级编址。</li>
+</ul>
+<p>Example：<br>128.14.32.0/20 表示的地址块共有 212 个地址（因为斜线后面的 20 是网络前缀的位数，所以这个地址的主机号是 12 位）。（掩码为前面连续20个1）</p>
+<h2 id="ICMP"><a href="#ICMP" class="headerlink" title="ICMP"></a>ICMP</h2><p>ICMP (Internet Control Message Protocol)网际控制报文协议。</p>
+<h3 id="ICMP报文格式"><a href="#ICMP报文格式" class="headerlink" title="ICMP报文格式"></a>ICMP报文格式</h3><p><img src="http://7xt1hs.com1.z0.glb.clouddn.com/network1-13.png" alt=""></p>
+<h3 id="ICMP的种类"><a href="#ICMP的种类" class="headerlink" title="ICMP的种类"></a>ICMP的种类</h3><ul>
+<li>ICMP 差错报告报文<ul>
+<li>终点不可达 </li>
+<li>源点抑制(Source quench)  </li>
+<li>时间超过 </li>
+<li>参数问题 </li>
+<li>改变路由（重定向）(Redirect)  </li>
+</ul>
+</li>
+<li>ICMP 询问报文<ul>
+<li>回送请求和回答报文</li>
+<li>时间戳请求和回答报文</li>
+</ul>
+</li>
+</ul>
+<h2 id="路由选择协议"><a href="#路由选择协议" class="headerlink" title="路由选择协议"></a>路由选择协议</h2><h3 id="自治系统（AS）"><a href="#自治系统（AS）" class="headerlink" title="自治系统（AS）"></a>自治系统（AS）</h3><ul>
+<li>自治系统之间的路由选择也叫做域间路由选择</li>
+<li>在自治系统内部的路由选择叫做域内路由选择</li>
+</ul>
+<h3 id="因特网的路由选择协议"><a href="#因特网的路由选择协议" class="headerlink" title="因特网的路由选择协议"></a>因特网的路由选择协议</h3><ul>
+<li>内部网关协议 IGP：具体的协议有多种，如 RIP 和 OSPF 等。</li>
+<li>外部网关协议 EGP：目前使用的协议就是 BGP。</li>
+</ul>
+<h2 id="网关内部协议RIP"><a href="#网关内部协议RIP" class="headerlink" title="网关内部协议RIP"></a>网关内部协议RIP</h2><h3 id="RIP定义"><a href="#RIP定义" class="headerlink" title="RIP定义"></a>RIP定义</h3><p>是一种分布式的基于距离向量的路由选择协议.</p>
+<h3 id="RIP要点"><a href="#RIP要点" class="headerlink" title="RIP要点"></a>RIP要点</h3><ul>
+<li>仅和相邻路由器交换信息。 </li>
+<li>交换的信息是当前本路由器所知道的全部信息，即自己的路由表。 </li>
+<li>按固定的时间间隔交换路由信息，例如，每隔 30 秒。 </li>
+</ul>
+<h3 id="RIP算法"><a href="#RIP算法" class="headerlink" title="RIP算法"></a>RIP算法</h3><p>收到相邻路由器（其地址为 X）的一个 RIP 报文：</p>
+<ul>
+<li>(1) 先修改此 RIP 报文中的所有项目：把“下一跳”字段中的地址都改为 X，并把所有的“距离”字段的值加 1。</li>
+<li>(2) 对修改后的 RIP 报文中的每一个项目，重复以下步骤：<br>若项目中的目的网络不在路由表中，则把该项目加到路由表中。<br>  否则<pre><code>若下一跳字段给出的路由器地址是同样的，则把收到的项    目    替换原路由表中的项目。
+否则 
+    若收到项目中的距离小于路由表中的距离，则进行更新，
+</code></pre>  否则，什么也不做。</li>
+<li>(3) 若 3 分钟还没有收到相邻路由器的更新路由表，则把此相邻路由器记为不可达路由器，即将距离置为16（距离为16表示不可达）。</li>
+<li>(4) 返回。</li>
+</ul>
+<h2 id="内部网关协议OSPF"><a href="#内部网关协议OSPF" class="headerlink" title="内部网关协议OSPF"></a>内部网关协议OSPF</h2><h3 id="OSPF定义"><a href="#OSPF定义" class="headerlink" title="OSPF定义"></a>OSPF定义</h3><p>是分布式的链路状态协议。 </p>
+<h3 id="OSPF要点"><a href="#OSPF要点" class="headerlink" title="OSPF要点"></a>OSPF要点</h3><ul>
+<li>向本自治系统中所有路由器发送信息，这里使用的方法是洪泛法。</li>
+<li>发送的信息就是与本路由器相邻的所有路由器的链路状态，但这只是路由器所知道的部分信息。</li>
+<li>只有当链路状态发生变化时，路由器才用洪泛法向所有路由器发送此信息。</li>
+</ul>
+<h3 id="OSPF的分类"><a href="#OSPF的分类" class="headerlink" title="OSPF的分类"></a>OSPF的分类</h3><ul>
+<li>类型1，问候(Hello)分组。</li>
+<li>类型2，数据库描述(Database Description)分组。</li>
+<li>类型3，链路状态请求(Link State Request)分组。</li>
+<li>类型4，链路状态更新(Link State Update)分组，用洪泛法对全网更新链路状态。</li>
+<li>类型5，链路状态确认(Link State Acknowledgment)分组。 </li>
+</ul>
+<h2 id="外部网关协议-BGP"><a href="#外部网关协议-BGP" class="headerlink" title="外部网关协议 BGP"></a>外部网关协议 BGP</h2><p>BGP-4 共使用四种报文：</p>
+<ul>
+<li>(1) 打开(OPEN)报文，用来与相邻的另一个BGP发言人建立关系。</li>
+<li>(2) 更新(UPDATE)报文，用来发送某一路由的信息，以及列出要撤消的多条路由。</li>
+<li>(3) 保活(KEEPALIVE)报文，用来确认打开报文和周期性地证实邻站关系。</li>
+<li>(4) 通知(NOTIFICATION)报文，用来发送检测到的差错。</li>
+</ul>
+<h2 id="网际组管理协议IGMP和多播路由选择协议"><a href="#网际组管理协议IGMP和多播路由选择协议" class="headerlink" title="网际组管理协议IGMP和多播路由选择协议"></a>网际组管理协议IGMP和多播路由选择协议</h2><ul>
+<li>为了使路由器知道多播组成员的信息，需要利用网际组管理协议 IGMP。</li>
+<li>连接在局域网上的多播路由器还必须和因特网上的其他多播路由器协同工作，以便把多播数据报用最小代价传送给所有的组成员。这就需要使用多播路由选择协议。</li>
+</ul>
+<h2 id="虚拟专用网-VPN-和网络地址转换-NAT"><a href="#虚拟专用网-VPN-和网络地址转换-NAT" class="headerlink" title="虚拟专用网 VPN 和网络地址转换 NAT"></a>虚拟专用网 VPN 和网络地址转换 NAT</h2><ul>
+<li>本地地址——仅在机构内部使用的 IP 地址，可以由本机构自行分配，而不需要向因特网的管理机构申请。</li>
+<li>全球地址——全球唯一的IP地址，必须向因特网的管理机构申请。 </li>
+</ul>
+<h3 id="虚拟专用网"><a href="#虚拟专用网" class="headerlink" title="虚拟专用网"></a>虚拟专用网</h3><p>用隧道技术实现虚拟专用网。</p>
+<ul>
+<li>由部门 A 和 B 的内部网络所构成的虚拟专用网 VPN 又称为内联网(intranet)，表示部门 A 和 B 都是在同一个机构的内部。</li>
+<li>一个机构和某些外部机构共同建立的虚拟专用网 VPN 又称为外联网(extranet)。</li>
+</ul>
+<h3 id="网络地址转换NAT"><a href="#网络地址转换NAT" class="headerlink" title="网络地址转换NAT"></a>网络地址转换NAT</h3><p>本地主机在于外界进行通信时，都要在NAT路由器上转换成全球地址才能和因特网连接。</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton", disable="enable", onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}", style="cursor: pointer; border: 0; outline: 0; border-radius: 100%; padding: 0; margin: 0; letter-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none">
+    <span onmouseover="this.style.color='rgb(236,96,0)';this.style.background='rgb(204,204,204)'" onMouseOut="this.style.color='#fff';this.style.background='rgb(236,96,0)'" style="display: inline-block; width: 70px; height: 70px; border-radius: 100%; line-height: 81px; color: #fff; font: 400 35px/75px 'microsofty'; background: rgb(236,96,0)">赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://7xt1hs.com1.z0.glb.clouddn.com/wechat-reward-image.jpg" alt="紫音染月 WeChat Pay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>微信打赏</p>
+      </div>
+    
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://7xt1hs.com1.z0.glb.clouddn.com/alipay-reward-image.jpg" alt="紫音染月 Alipay" style="width: 200px; max-width: 100%; display: inline-block"/>
+        <p>支付宝打赏</p>
+      </div>
+    
+  </div>
+</div>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/network/" rel="tag">#network</a>
+          
+            <a href="/tags/IP/" rel="tag">#IP</a>
+          
+            <a href="/tags/ICMP/" rel="tag">#ICMP</a>
+          
+            <a href="/tags/IGMP/" rel="tag">#IGMP</a>
+          
+            <a href="/tags/RIP/" rel="tag">#RIP</a>
+          
+            <a href="/tags/OSPF/" rel="tag">#OSPF</a>
+          
+            <a href="/tags/BGP/" rel="tag">#BGP</a>
+          
+            <a href="/tags/VPN/" rel="tag">#VPN</a>
+          
+            <a href="/tags/NAT/" rel="tag">#NAT</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/22/performance/" rel="next" title="网页性能的提升">
+                <i class="fa fa-chevron-left"></i> 网页性能的提升
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/22/network3/" rel="prev" title="network(3)之数据链路层">
+                network(3)之数据链路层 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/22/network2/"
+           data-title="network(2)之网络层" data-url="https://Hxiaomin.github.io/2016/09/22/network2/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xt1hs.com1.z0.glb.clouddn.com/avatar.jpg"
+               alt="紫音染月" />
+          <p class="site-author-name" itemprop="name">紫音染月</p>
+          <p class="site-description motion-element" itemprop="description">生如夏花之绚烂，死如秋叶之静美</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">64</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Hxiaomin" target="_blank" title="Github">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2378980251" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:1245537792@qq.com" target="_blank" title="Email">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  Email
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#OSI七层模型"><span class="nav-number">1.</span> <span class="nav-text">OSI七层模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP"><span class="nav-number">2.</span> <span class="nav-text">IP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IP地址的数据格式"><span class="nav-number">2.1.</span> <span class="nav-text">IP地址的数据格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IP地址的分类"><span class="nav-number">2.2.</span> <span class="nav-text">IP地址的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IP-地址-AND-子网掩码-网络地址"><span class="nav-number">2.3.</span> <span class="nav-text">(IP 地址) AND (子网掩码) = 网络地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#默认的子网掩码"><span class="nav-number">2.4.</span> <span class="nav-text">默认的子网掩码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无分类编址CIDR"><span class="nav-number">2.5.</span> <span class="nav-text">无分类编址CIDR</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ICMP"><span class="nav-number">3.</span> <span class="nav-text">ICMP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ICMP报文格式"><span class="nav-number">3.1.</span> <span class="nav-text">ICMP报文格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ICMP的种类"><span class="nav-number">3.2.</span> <span class="nav-text">ICMP的种类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由选择协议"><span class="nav-number">4.</span> <span class="nav-text">路由选择协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自治系统（AS）"><span class="nav-number">4.1.</span> <span class="nav-text">自治系统（AS）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#因特网的路由选择协议"><span class="nav-number">4.2.</span> <span class="nav-text">因特网的路由选择协议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网关内部协议RIP"><span class="nav-number">5.</span> <span class="nav-text">网关内部协议RIP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RIP定义"><span class="nav-number">5.1.</span> <span class="nav-text">RIP定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RIP要点"><span class="nav-number">5.2.</span> <span class="nav-text">RIP要点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RIP算法"><span class="nav-number">5.3.</span> <span class="nav-text">RIP算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内部网关协议OSPF"><span class="nav-number">6.</span> <span class="nav-text">内部网关协议OSPF</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#OSPF定义"><span class="nav-number">6.1.</span> <span class="nav-text">OSPF定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OSPF要点"><span class="nav-number">6.2.</span> <span class="nav-text">OSPF要点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OSPF的分类"><span class="nav-number">6.3.</span> <span class="nav-text">OSPF的分类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#外部网关协议-BGP"><span class="nav-number">7.</span> <span class="nav-text">外部网关协议 BGP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网际组管理协议IGMP和多播路由选择协议"><span class="nav-number">8.</span> <span class="nav-text">网际组管理协议IGMP和多播路由选择协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟专用网-VPN-和网络地址转换-NAT"><span class="nav-number">9.</span> <span class="nav-text">虚拟专用网 VPN 和网络地址转换 NAT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟专用网"><span class="nav-number">9.1.</span> <span class="nav-text">虚拟专用网</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络地址转换NAT"><span class="nav-number">9.2.</span> <span class="nav-text">网络地址转换NAT</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016/04/15 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">紫音染月</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"Hxiaomin"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("cE5WUWWJTxrokSQ5c4RCmCnA-gzGzoHsz", "t9G8EDbi6WNXIPqX05MWb4nt");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
